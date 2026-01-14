@@ -1,14 +1,239 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hot Wheels</title>
+    <title>Compra - Hot Wheels Unleashed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🔥 Hot Wheels</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="compra.html">Compra</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CABECERA COMPRA -->
+    <header class="compra-header">
+        <div class="container text-center">
+            <h1>Tienda Hot Wheels</h1>
+            <p>Elige tu edición y empieza la carrera</p>
+        </div>
+    </header>
+
+    <!-- PRODUCTOS / EDICIONES -->
+    <section class="productos">
+        <div class="container">
+            <h2 class="section-title">Ediciones disponibles</h2>
+
+            <div class="row g-4">
+                <!-- Edición Estándar -->
+                <div class="col-md-4">
+                    <div class="producto-card">
+                        <img src="img/card1.webp" alt="Edición Estándar">
+                        <h3>Edición Estándar</h3>
+                        <p class="precio">39,99 €</p>
+                        <ul class="caracteristicas">
+                            <li>Juego base completo</li>
+                            <li>5 coches exclusivos</li>
+                        </ul>
+                        <button class="cta-btn">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Edición Deluxe -->
+                <div class="col-md-4">
+                    <div class="producto-card destacado">
+                        <span class="badge-popular">Más popular</span>
+                        <img src="img/card1.webp" alt="Edición Deluxe">
+                        <h3>Edición Deluxe</h3>
+                        <p class="precio">59,99 €</p>
+                        <ul class="caracteristicas">
+                            <li>Juego base completo</li>
+                            <li>15 coches exclusivos</li>
+                            <li>Pase de temporada</li>
+                        </ul>
+                        <button class="cta-btn">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Edición Ultimate -->
+                <div class="col-md-4">
+                    <div class="producto-card">
+                        <img src="img/card1.webp" alt="Edición Ultimate">
+                        <h3>Edición Ultimate</h3>
+                        <p class="precio">89,99 €</p>
+                        <ul class="caracteristicas">
+                            <li>Juego base completo</li>
+                            <li>30 coches exclusivos</li>
+                            <li>Pase de temporada</li>
+                            <li>Contenido extra VIP</li>
+                        </ul>
+                        <button class="cta-btn">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUMEN CARRITO -->
+    <section class="carrito">
+        <div class="container">
+            <h2 class="section-title">Tu carrito</h2>
+
+            <div class="carrito-vacio">
+                <p>Tu carrito está vacío. ¡Añade productos para empezar!</p>
+            </div>
+
+            <!-- Esto se mostrará cuando haya productos -->
+            <div class="carrito-contenido" style="display: none;">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="carrito-items">
+                        <!-- Items del carrito se añadirán aquí con JS -->
+                    </tbody>
+                </table>
+
+                <div class="carrito-total">
+                    <p><strong>Total:</strong> <span id="total-precio">0,00 €</span></p>
+                    <button class="cta-btn">Proceder al pago</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE PAGO -->
+    <section class="formulario-pago">
+        <div class="container">
+            <h2 class="section-title">Datos de pago</h2>
+
+            <form class="row g-3" id="form-pago">
+                <div class="col-md-6">
+                    <label for="nombre" class="form-label">Nombre completo</label>
+                    <input type="text" class="form-control" id="nombre" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="direccion" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="ciudad" class="form-label">Ciudad</label>
+                    <input type="text" class="form-control" id="ciudad" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="cp" class="form-label">Código Postal</label>
+                    <input type="text" class="form-control" id="cp" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="pais" class="form-label">País</label>
+                    <select class="form-select" id="pais" required>
+                        <option value="">Selecciona...</option>
+                        <option value="ES">España</option>
+                        <option value="MX">México</option>
+                        <option value="AR">Argentina</option>
+                        <option value="CO">Colombia</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <h4>Método de pago</h4>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="tarjeta" class="form-label">Número de tarjeta</label>
+                    <input type="text" class="form-control" id="tarjeta" placeholder="0000 0000 0000 0000" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="fecha" class="form-label">Fecha expiración</label>
+                    <input type="text" class="form-control" id="fecha" placeholder="MM/AA" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="cta-btn">Finalizar compra</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h4>Hot Wheels</h4>
+                    <p>Velocidad, diseño y adrenalina desde hace generaciones.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="compra.html">Compra</a></li>
+                        <li>Soporte</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li>Privacidad</li>
+                        <li>Términos</li>
+                        <li>Cookies</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copy">© 2025 Hot Wheels</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
+</CodeContent>
+<parameter name="EmptyFile">false
