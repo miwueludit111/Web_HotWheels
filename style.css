@@ -5,19 +5,24 @@ body {
   color: #fff;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: 'Orbitron', sans-serif;
 }
 
 .hero {
-  min-height: 100vh;              /* todas las secciones igual de altas */
+  min-height: 100vh;
+  /* todas las secciones igual de altas */
   display: flex;
   align-items: center;
 
   background-image: url("img/FondoJuego1.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;       /* 🔑 muestra la imagen entera */
+  background-size: contain;
+  /* 🔑 muestra la imagen entera */
 }
 
 
@@ -81,7 +86,8 @@ h1, h2, h3, h4 {
   background-image: url("img/FondoJuego2.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain; /* 🔑 imagen completa */
+  background-size: contain;
+  /* 🔑 imagen completa */
 }
 
 
@@ -90,7 +96,8 @@ h1, h2, h3, h4 {
   background-image: url("img/FondoJuego3.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain; /* imagen completa */
+  background-size: contain;
+  /* imagen completa */
 }
 
 
@@ -123,7 +130,7 @@ h1, h2, h3, h4 {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
 }
@@ -178,5 +185,406 @@ h1, h2, h3, h4 {
     max-width: 360px;
     margin: 0 auto 25px;
     display: block;
+  }
+}
+
+/* =====================================================
+   ESTILOS DE SEBASTIÁN - Carrito y Pago
+   Prefijo "s-" para evitar conflictos
+   ===================================================== */
+
+/* ---------- S-HEADER ---------- */
+.s-header {
+  padding: 80px 0 40px;
+  background: linear-gradient(135deg, #0c1022 0%, #1a1f4a 100%);
+  text-align: center;
+}
+
+.s-header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.s-header p {
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+/* ---------- S-CARRITO ---------- */
+.s-carrito {
+  padding: 60px 0;
+  min-height: 60vh;
+}
+
+.s-carrito-vacio {
+  text-align: center;
+  padding: 80px 20px;
+  background: #1a1f4a;
+  border-radius: 12px;
+}
+
+.s-carrito-vacio p {
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+.s-carrito-contenido {
+  display: block;
+}
+
+/* ---------- S-SHOPPING-CART ---------- */
+.s-shopping-cart {
+  background: #1a1f4a;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.s-shopping-cart h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.s-cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.s-cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #0c1022;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+.s-cart-item:hover {
+  transform: translateX(5px);
+}
+
+.s-cart-item-image {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.s-cart-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.s-cart-item-details {
+  flex: 1;
+}
+
+.s-cart-item-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  margin: 0 0 5px 0;
+}
+
+.s-cart-item-price {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.s-cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.s-qty-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #ff2e2e;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.s-qty-btn:hover {
+  background: #cc2424;
+}
+
+.s-qty-value {
+  font-size: 1rem;
+  color: #fff;
+  min-width: 30px;
+  text-align: center;
+}
+
+.s-cart-item-total {
+  min-width: 80px;
+  text-align: right;
+}
+
+.s-cart-item-total p {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  color: #ff2e2e;
+  margin: 0;
+}
+
+.s-cart-item-remove {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.s-cart-item-remove:hover {
+  background: #ff2e2e;
+  color: #fff;
+}
+
+.s-seguir-comprando {
+  display: inline-block;
+  margin-top: 25px;
+  color: #ff2e2e;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.s-seguir-comprando:hover {
+  color: #fff;
+}
+
+/* ---------- S-ORDER-SUMMARY ---------- */
+.s-order-summary {
+  background: #1a1f4a;
+  border-radius: 12px;
+  padding: 30px;
+  position: sticky;
+  top: 20px;
+}
+
+.s-order-summary h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.s-order-summary hr {
+  border-color: #333;
+  margin: 15px 0;
+}
+
+.s-summary-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.s-summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.s-summary-item-name {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.s-summary-item-price {
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.s-summary-totals {
+  margin-top: 10px;
+}
+
+.s-summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: #ccc;
+}
+
+.s-summary-total {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.s-summary-total span:last-child {
+  color: #ff2e2e;
+}
+
+/* ---------- S-BOTONES ---------- */
+.s-btn {
+  display: block;
+  width: 100%;
+  padding: 15px 25px;
+  background: #ff2e2e;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.s-btn:hover {
+  background: #cc2424;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.s-checkout-btn {
+  margin-top: 25px;
+}
+
+.s-btn-finalizar {
+  font-size: 1.1rem;
+  padding: 18px 30px;
+}
+
+/* ---------- S-PAGO ---------- */
+.s-pago {
+  padding: 60px 0;
+}
+
+.s-formulario {
+  background: #1a1f4a;
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 30px;
+}
+
+.s-formulario h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.s-formulario .form-control,
+.s-formulario .form-select {
+  background: #0c1022;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 12px 15px;
+}
+
+.s-formulario .form-control:focus,
+.s-formulario .form-select:focus {
+  background: #0c1022;
+  border-color: #ff2e2e;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 46, 46, 0.2);
+}
+
+.s-formulario .form-control::placeholder {
+  color: #666;
+}
+
+.s-formulario .form-label {
+  color: #ccc;
+  font-weight: 500;
+}
+
+.s-volver-carrito {
+  display: inline-block;
+  margin-top: 20px;
+  color: #ff2e2e;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.s-volver-carrito:hover {
+  color: #fff;
+}
+
+/* ---------- S-RESPONSIVE ---------- */
+@media (max-width: 991px) {
+  .s-order-summary {
+    position: static;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .s-header {
+    padding: 60px 0 30px;
+  }
+
+  .s-header h1 {
+    font-size: 2rem;
+  }
+
+  .s-cart-item {
+    flex-wrap: wrap;
+    gap: 15px;
+    position: relative;
+  }
+
+  .s-cart-item-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .s-cart-item-details {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .s-cart-item-quantity {
+    order: 4;
+    width: 100%;
+    justify-content: center;
+    padding-top: 10px;
+    border-top: 1px solid #333;
+  }
+
+  .s-cart-item-total {
+    order: 3;
+  }
+
+  .s-cart-item-remove {
+    order: 5;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  .s-shopping-cart,
+  .s-order-summary,
+  .s-formulario {
+    padding: 20px;
   }
 }
