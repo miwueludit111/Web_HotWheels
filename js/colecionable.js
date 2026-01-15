@@ -16,7 +16,7 @@ const observer = new IntersectionObserver(
       const currentImg = images[currentIndex];
       const nextImg = images[newIndex];
 
-      // Limpiar clases
+      // Limpiar clasesssssss
       images.forEach((img) => {
         img.classList.remove(
           "active",

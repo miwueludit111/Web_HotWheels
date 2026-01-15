@@ -13,7 +13,7 @@ gsap.to(".intro h1", {
   },
 });
 
-/* HORIZONTAL FAKE SCROLL */
+/* HORIZONTAL FAKE SCROLLssss */
 const panels = gsap.utils.toArray(".panel");
 
 const horizontalScroll = gsap.to(panels, {
