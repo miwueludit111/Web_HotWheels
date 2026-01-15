@@ -38,7 +38,7 @@
     </nav>
 
     <!-- CABECERA -->
-    <header class="compra-header">
+    <header class="s-header">
         <div class="container text-center">
             <h1>Finalizar Compra</h1>
             <p>Introduce tus datos para completar el pedido</p>
@@ -46,14 +46,14 @@
     </header>
 
     <!-- PROCESO DE PAGO -->
-    <section class="proceso-pago">
+    <section class="s-pago">
         <div class="container">
             <div class="row">
 
                 <!-- COLUMNA IZQUIERDA: Formulario de pago -->
                 <div class="col-lg-8">
-                    <div class="formulario-pago">
-                        <form class="row g-3" id="form-pago">
+                    <div class="s-formulario">
+                        <form class="row g-3" id="s-form-pago">
 
                             <!-- Datos personales -->
                             <div class="col-12">
@@ -61,18 +61,18 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="nombre" class="form-label">Nombre completo</label>
-                                <input type="text" class="form-control" id="nombre" required>
+                                <label for="s-nombre" class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="s-nombre" required>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" required>
+                                <label for="s-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="s-email" required>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="telefono" class="form-label">Teléfono</label>
-                                <input type="tel" class="form-control" id="telefono" required>
+                                <label for="s-telefono" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="s-telefono" required>
                             </div>
 
                             <!-- Dirección de envío -->
@@ -81,24 +81,24 @@
                             </div>
 
                             <div class="col-12">
-                                <label for="direccion" class="form-label">Dirección</label>
-                                <input type="text" class="form-control" id="direccion"
+                                <label for="s-direccion" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" id="s-direccion"
                                     placeholder="Calle, número, piso..." required>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="ciudad" class="form-label">Ciudad</label>
-                                <input type="text" class="form-control" id="ciudad" required>
+                                <label for="s-ciudad" class="form-label">Ciudad</label>
+                                <input type="text" class="form-control" id="s-ciudad" required>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="cp" class="form-label">Código Postal</label>
-                                <input type="text" class="form-control" id="cp" required>
+                                <label for="s-cp" class="form-label">Código Postal</label>
+                                <input type="text" class="form-control" id="s-cp" required>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="pais" class="form-label">País</label>
-                                <select class="form-select" id="pais" required>
+                                <label for="s-pais" class="form-label">País</label>
+                                <select class="form-select" id="s-pais" required>
                                     <option value="">Selecciona...</option>
                                     <option value="ES">España</option>
                                     <option value="MX">México</option>
@@ -113,28 +113,28 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="titular" class="form-label">Titular de la tarjeta</label>
-                                <input type="text" class="form-control" id="titular" required>
+                                <label for="s-titular" class="form-label">Titular de la tarjeta</label>
+                                <input type="text" class="form-control" id="s-titular" required>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="tarjeta" class="form-label">Número de tarjeta</label>
-                                <input type="text" class="form-control" id="tarjeta" placeholder="0000 0000 0000 0000"
+                                <label for="s-tarjeta" class="form-label">Número de tarjeta</label>
+                                <input type="text" class="form-control" id="s-tarjeta" placeholder="0000 0000 0000 0000"
                                     required>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="fecha" class="form-label">Fecha expiración</label>
-                                <input type="text" class="form-control" id="fecha" placeholder="MM/AA" required>
+                                <label for="s-fecha" class="form-label">Fecha expiración</label>
+                                <input type="text" class="form-control" id="s-fecha" placeholder="MM/AA" required>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="cvv" class="form-label">CVV</label>
-                                <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                                <label for="s-cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="s-cvv" placeholder="123" required>
                             </div>
 
                             <div class="col-12 mt-4">
-                                <button type="submit" class="cta-btn btn-finalizar">Confirmar y pagar</button>
+                                <button type="submit" class="s-btn s-btn-finalizar">Confirmar y pagar</button>
                             </div>
                         </form>
                     </div>
@@ -142,45 +142,34 @@
 
                 <!-- COLUMNA DERECHA: Resumen del pedido -->
                 <div class="col-lg-4">
-                    <div class="order-summary">
+                    <div class="s-order-summary">
                         <h3>Resumen del pedido</h3>
 
                         <!-- Lista de productos -->
-                        <div class="summary-items" id="summary-items">
-                            <div class="summary-item">
-                                <span class="summary-item-name">Twin Mill (x1)</span>
-                                <span class="summary-item-price">4,99 €</span>
-                            </div>
-                            <div class="summary-item">
-                                <span class="summary-item-name">Pista Loop Básico (x2)</span>
-                                <span class="summary-item-price">39,98 €</span>
-                            </div>
-                            <div class="summary-item">
-                                <span class="summary-item-name">Pack 5 Coches (x1)</span>
-                                <span class="summary-item-price">14,99 €</span>
-                            </div>
+                        <div class="s-summary-items" id="s-summary-items-pago">
+                            <!-- Se carga dinámicamente -->
                         </div>
 
                         <hr>
 
                         <!-- Subtotal, Envío, Total -->
-                        <div class="summary-totals">
-                            <div class="summary-row">
+                        <div class="s-summary-totals">
+                            <div class="s-summary-row">
                                 <span>Subtotal</span>
-                                <span id="subtotal">59,96 €</span>
+                                <span id="s-subtotal-pago">0,00 €</span>
                             </div>
-                            <div class="summary-row">
+                            <div class="s-summary-row">
                                 <span>Envío</span>
-                                <span id="envio">5,00 €</span>
+                                <span id="s-envio-pago">5,00 €</span>
                             </div>
                             <hr>
-                            <div class="summary-row summary-total">
+                            <div class="s-summary-row s-summary-total">
                                 <span>Total</span>
-                                <span id="total">64,96 €</span>
+                                <span id="s-total-pago">5,00 €</span>
                             </div>
                         </div>
 
-                        <a href="carrito.html" class="volver-carrito">← Volver al carrito</a>
+                        <a href="carrito.html" class="s-volver-carrito">← Volver al carrito</a>
                     </div>
                 </div>
 

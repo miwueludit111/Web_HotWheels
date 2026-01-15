@@ -38,7 +38,7 @@
     </nav>
 
     <!-- CABECERA -->
-    <header class="compra-header">
+    <header class="s-header">
         <div class="container text-center">
             <h1>Tu Carrito</h1>
             <p>Revisa los productos antes de continuar</p>
@@ -46,131 +46,62 @@
     </header>
 
     <!-- CARRITO -->
-    <section class="carrito">
+    <section class="s-carrito">
         <div class="container">
 
             <!-- Carrito vacío -->
-            <div class="carrito-vacio" id="carrito-vacio">
+            <div class="s-carrito-vacio" id="s-carrito-vacio">
                 <p>Tu carrito está vacío. ¡Añade productos para empezar!</p>
-                <a href="catalogo.html" class="cta-btn">Seguir comprando</a>
+                <a href="catalogo.html" class="s-btn">Seguir comprando</a>
             </div>
 
             <!-- Carrito con productos -->
-            <div class="carrito-contenido" id="carrito-contenido">
+            <div class="s-carrito-contenido" id="s-carrito-contenido">
                 <div class="row">
 
                     <!-- COLUMNA IZQUIERDA: Shopping Cart -->
                     <div class="col-lg-8">
-                        <div class="shopping-cart">
+                        <div class="s-shopping-cart">
                             <h3>Shopping Cart</h3>
 
-                            <div class="cart-items" id="cart-items">
-                                <!-- Producto ejemplo 1 -->
-                                <div class="cart-item" data-id="1">
-                                    <div class="cart-item-image">
-                                        <img src="img/card1.webp" alt="Twin Mill">
-                                    </div>
-                                    <div class="cart-item-details">
-                                        <h4 class="cart-item-name">Twin Mill</h4>
-                                        <p class="cart-item-price">4,99 €</p>
-                                    </div>
-                                    <div class="cart-item-quantity">
-                                        <button class="qty-btn qty-minus">−</button>
-                                        <span class="qty-value">1</span>
-                                        <button class="qty-btn qty-plus">+</button>
-                                    </div>
-                                    <div class="cart-item-total">
-                                        <p>4,99 €</p>
-                                    </div>
-                                    <button class="cart-item-remove" title="Eliminar">✕</button>
-                                </div>
-
-                                <!-- Producto ejemplo 2 -->
-                                <div class="cart-item" data-id="2">
-                                    <div class="cart-item-image">
-                                        <img src="img/card1.webp" alt="Pista Loop Básico">
-                                    </div>
-                                    <div class="cart-item-details">
-                                        <h4 class="cart-item-name">Pista Loop Básico</h4>
-                                        <p class="cart-item-price">19,99 €</p>
-                                    </div>
-                                    <div class="cart-item-quantity">
-                                        <button class="qty-btn qty-minus">−</button>
-                                        <span class="qty-value">2</span>
-                                        <button class="qty-btn qty-plus">+</button>
-                                    </div>
-                                    <div class="cart-item-total">
-                                        <p>39,98 €</p>
-                                    </div>
-                                    <button class="cart-item-remove" title="Eliminar">✕</button>
-                                </div>
-
-                                <!-- Producto ejemplo 3 -->
-                                <div class="cart-item" data-id="3">
-                                    <div class="cart-item-image">
-                                        <img src="img/card1.webp" alt="Pack 5 Coches">
-                                    </div>
-                                    <div class="cart-item-details">
-                                        <h4 class="cart-item-name">Pack 5 Coches</h4>
-                                        <p class="cart-item-price">14,99 €</p>
-                                    </div>
-                                    <div class="cart-item-quantity">
-                                        <button class="qty-btn qty-minus">−</button>
-                                        <span class="qty-value">1</span>
-                                        <button class="qty-btn qty-plus">+</button>
-                                    </div>
-                                    <div class="cart-item-total">
-                                        <p>14,99 €</p>
-                                    </div>
-                                    <button class="cart-item-remove" title="Eliminar">✕</button>
-                                </div>
+                            <div class="s-cart-items" id="s-cart-items">
+                                <!-- Los productos se cargarán dinámicamente con JS -->
                             </div>
 
-                            <a href="catalogo.html" class="seguir-comprando">← Seguir comprando</a>
+                            <a href="catalogo.html" class="s-seguir-comprando">← Seguir comprando</a>
                         </div>
                     </div>
 
                     <!-- COLUMNA DERECHA: Order Summary -->
                     <div class="col-lg-4">
-                        <div class="order-summary">
+                        <div class="s-order-summary">
                             <h3>Order Summary</h3>
 
                             <!-- Lista de productos en el resumen -->
-                            <div class="summary-items" id="summary-items">
-                                <div class="summary-item">
-                                    <span class="summary-item-name">Twin Mill (x1)</span>
-                                    <span class="summary-item-price">4,99 €</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="summary-item-name">Pista Loop Básico (x2)</span>
-                                    <span class="summary-item-price">39,98 €</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="summary-item-name">Pack 5 Coches (x1)</span>
-                                    <span class="summary-item-price">14,99 €</span>
-                                </div>
+                            <div class="s-summary-items" id="s-summary-items">
+                                <!-- Se carga dinámicamente -->
                             </div>
 
                             <hr>
 
                             <!-- Subtotal, Envío, Total -->
-                            <div class="summary-totals">
-                                <div class="summary-row">
+                            <div class="s-summary-totals">
+                                <div class="s-summary-row">
                                     <span>Subtotal</span>
-                                    <span id="subtotal">59,96 €</span>
+                                    <span id="s-subtotal">0,00 €</span>
                                 </div>
-                                <div class="summary-row">
+                                <div class="s-summary-row">
                                     <span>Envío</span>
-                                    <span id="envio">5,00 €</span>
+                                    <span id="s-envio">5,00 €</span>
                                 </div>
                                 <hr>
-                                <div class="summary-row summary-total">
+                                <div class="s-summary-row s-summary-total">
                                     <span>Total</span>
-                                    <span id="total">64,96 €</span>
+                                    <span id="s-total">5,00 €</span>
                                 </div>
                             </div>
 
-                            <a href="pago.html" class="cta-btn checkout-btn">Checkout</a>
+                            <a href="pago.html" class="s-btn s-checkout-btn" id="s-btn-checkout">Checkout</a>
                         </div>
                     </div>
 
