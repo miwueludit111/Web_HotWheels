@@ -39,94 +39,141 @@
     <!-- CABECERA COMPRA -->
     <header class="compra-header">
         <div class="container text-center">
-            <h1>Tienda Hot Wheels</h1>
-            <p>Elige tu edición y empieza la carrera</p>
+            <h1>Finalizar Compra</h1>
+            <p>Revisa tu pedido y completa el pago</p>
         </div>
     </header>
-
-    <!-- PRODUCTOS / EDICIONES -->
-    <section class="productos">
-        <div class="container">
-            <h2 class="section-title">Ediciones disponibles</h2>
-
-            <div class="row g-4">
-                <!-- Edición Estándar -->
-                <div class="col-md-4">
-                    <div class="producto-card">
-                        <img src="img/card1.webp" alt="Edición Estándar">
-                        <h3>Edición Estándar</h3>
-                        <p class="precio">39,99 €</p>
-                        <ul class="caracteristicas">
-                            <li>Juego base completo</li>
-                            <li>5 coches exclusivos</li>
-                        </ul>
-                        <button class="cta-btn">Añadir al carrito</button>
-                    </div>
-                </div>
-
-                <!-- Edición Deluxe -->
-                <div class="col-md-4">
-                    <div class="producto-card destacado">
-                        <span class="badge-popular">Más popular</span>
-                        <img src="img/card1.webp" alt="Edición Deluxe">
-                        <h3>Edición Deluxe</h3>
-                        <p class="precio">59,99 €</p>
-                        <ul class="caracteristicas">
-                            <li>Juego base completo</li>
-                            <li>15 coches exclusivos</li>
-                            <li>Pase de temporada</li>
-                        </ul>
-                        <button class="cta-btn">Añadir al carrito</button>
-                    </div>
-                </div>
-
-                <!-- Edición Ultimate -->
-                <div class="col-md-4">
-                    <div class="producto-card">
-                        <img src="img/card1.webp" alt="Edición Ultimate">
-                        <h3>Edición Ultimate</h3>
-                        <p class="precio">89,99 €</p>
-                        <ul class="caracteristicas">
-                            <li>Juego base completo</li>
-                            <li>30 coches exclusivos</li>
-                            <li>Pase de temporada</li>
-                            <li>Contenido extra VIP</li>
-                        </ul>
-                        <button class="cta-btn">Añadir al carrito</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- RESUMEN CARRITO -->
     <section class="carrito">
         <div class="container">
             <h2 class="section-title">Tu carrito</h2>
 
-            <div class="carrito-vacio">
+            <!-- Carrito vacío -->
+            <div class="carrito-vacio" id="carrito-vacio">
                 <p>Tu carrito está vacío. ¡Añade productos para empezar!</p>
+                <a href="catalogo.html" class="cta-btn">Seguir comprando</a>
             </div>
 
-            <!-- Esto se mostrará cuando haya productos -->
-            <div class="carrito-contenido" style="display: none;">
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                            <th>Precio</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="carrito-items">
-                        <!-- Items del carrito se añadirán aquí con JS -->
-                    </tbody>
-                </table>
+            <!-- Carrito con productos -->
+            <div class="carrito-contenido" id="carrito-contenido">
+                <div class="row">
 
-                <div class="carrito-total">
-                    <p><strong>Total:</strong> <span id="total-precio">0,00 €</span></p>
-                    <button class="cta-btn">Proceder al pago</button>
+                    <!-- COLUMNA IZQUIERDA: Shopping Cart -->
+                    <div class="col-lg-8">
+                        <div class="shopping-cart">
+                            <h3>Shopping Cart</h3>
+
+                            <div class="cart-items" id="cart-items">
+                                <!-- Producto ejemplo 1 -->
+                                <div class="cart-item" data-id="1">
+                                    <div class="cart-item-image">
+                                        <img src="img/card1.webp" alt="Twin Mill">
+                                    </div>
+                                    <div class="cart-item-details">
+                                        <h4 class="cart-item-name">Twin Mill</h4>
+                                        <p class="cart-item-price">4,99 €</p>
+                                    </div>
+                                    <div class="cart-item-quantity">
+                                        <button class="qty-btn qty-minus">−</button>
+                                        <span class="qty-value">1</span>
+                                        <button class="qty-btn qty-plus">+</button>
+                                    </div>
+                                    <div class="cart-item-total">
+                                        <p>4,99 €</p>
+                                    </div>
+                                    <button class="cart-item-remove" title="Eliminar">✕</button>
+                                </div>
+
+                                <!-- Producto ejemplo 2 -->
+                                <div class="cart-item" data-id="2">
+                                    <div class="cart-item-image">
+                                        <img src="img/card1.webp" alt="Pista Loop Básico">
+                                    </div>
+                                    <div class="cart-item-details">
+                                        <h4 class="cart-item-name">Pista Loop Básico</h4>
+                                        <p class="cart-item-price">19,99 €</p>
+                                    </div>
+                                    <div class="cart-item-quantity">
+                                        <button class="qty-btn qty-minus">−</button>
+                                        <span class="qty-value">2</span>
+                                        <button class="qty-btn qty-plus">+</button>
+                                    </div>
+                                    <div class="cart-item-total">
+                                        <p>39,98 €</p>
+                                    </div>
+                                    <button class="cart-item-remove" title="Eliminar">✕</button>
+                                </div>
+
+                                <!-- Producto ejemplo 3 -->
+                                <div class="cart-item" data-id="3">
+                                    <div class="cart-item-image">
+                                        <img src="img/card1.webp" alt="Pack 5 Coches">
+                                    </div>
+                                    <div class="cart-item-details">
+                                        <h4 class="cart-item-name">Pack 5 Coches</h4>
+                                        <p class="cart-item-price">14,99 €</p>
+                                    </div>
+                                    <div class="cart-item-quantity">
+                                        <button class="qty-btn qty-minus">−</button>
+                                        <span class="qty-value">1</span>
+                                        <button class="qty-btn qty-plus">+</button>
+                                    </div>
+                                    <div class="cart-item-total">
+                                        <p>14,99 €</p>
+                                    </div>
+                                    <button class="cart-item-remove" title="Eliminar">✕</button>
+                                </div>
+                            </div>
+
+                            <a href="catalogo.html" class="seguir-comprando">← Seguir comprando</a>
+                        </div>
+                    </div>
+
+                    <!-- COLUMNA DERECHA: Order Summary -->
+                    <div class="col-lg-4">
+                        <div class="order-summary">
+                            <h3>Order Summary</h3>
+
+                            <!-- Lista de productos en el resumen -->
+                            <div class="summary-items" id="summary-items">
+                                <div class="summary-item">
+                                    <span class="summary-item-name">Twin Mill (x1)</span>
+                                    <span class="summary-item-price">4,99 €</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-item-name">Pista Loop Básico (x2)</span>
+                                    <span class="summary-item-price">39,98 €</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-item-name">Pack 5 Coches (x1)</span>
+                                    <span class="summary-item-price">14,99 €</span>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <!-- Subtotal, Envío, Total -->
+                            <div class="summary-totals">
+                                <div class="summary-row">
+                                    <span>Subtotal</span>
+                                    <span id="subtotal">59,96 €</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Envío</span>
+                                    <span id="envio">5,00 €</span>
+                                </div>
+                                <hr>
+                                <div class="summary-row summary-total">
+                                    <span>Total</span>
+                                    <span id="total">64,96 €</span>
+                                </div>
+                            </div>
+
+                            <button class="cta-btn checkout-btn" id="btn-checkout">Checkout</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -235,5 +282,3 @@
 </body>
 
 </html>
-</CodeContent>
-<parameter name="EmptyFile">false
