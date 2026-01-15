@@ -122,3 +122,79 @@ a {
   border-bottom: darkorange;
   font-family: "hea";
 }
+.footer {
+  background: #8b0000;
+  padding: 60px 0 20px;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  /* INTRO */
+  .intro h1 {
+    font-size: 2.2rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  /* IMÁGENES DECORATIVAS */
+  .curvas,
+  .curvas1 {
+    width: 140%;
+    height: auto;
+  }
+
+  .curvas1 {
+    width: 70%;
+    opacity: 0.8;
+  }
+
+  /* SECCIÓN SCROLL */
+  .scroll-section {
+    height: 100vh;
+  }
+
+  .track {
+    flex-direction: row;
+  }
+
+  /* PANEL */
+  .panel {
+    min-width: 100vw;
+    padding: 1rem;
+  }
+
+  /* CONTENIDO CENTRAL */
+  .panel-content {
+    width: 100%;
+    height: auto;
+    border-radius: 10%;
+  }
+
+  /* IMÁGENES */
+  .panel-content img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* UI */
+  .panel-ui {
+    bottom: 6%;
+    gap: 0.6em;
+  }
+
+  .panel-text {
+    font-size: 1.4rem;
+    opacity: 1; /* en móvil mejor visible siempre */
+  }
+
+  .panel-btn {
+    font-size: 0.9rem;
+    padding: 0.6em 1.2em;
+    opacity: 1; /* evita depender del hover */
+    border-radius: 20%;
+  }
+}
