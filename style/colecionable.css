@@ -1,0 +1,180 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: hea;
+  font-size: 3rem;
+}
+@font-face {
+  font-family: "hea";
+  src: url(../font/heavy\ heap\ rg.otf);
+}
+a {
+  text-decoration: none; /* quita el subrayadocuiodao */
+  color: #dbd834; /* color del enlace */
+}
+/* LAYOUT FIJO */
+.fixed-layout {
+  position: fixed;
+  inset: 0;
+  display: flex;
+}
+
+/* PANEL IMAGEN (AMARILLO) */
+.image-panel {
+  width: 60%;
+  background: #3cabf5;
+  position: relative;
+  overflow: hidden;
+}
+
+/* IMÁGENES */
+.img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ESTADOS DE ENTRADA */
+.from-bottom {
+  transform: translateY(100%);
+}
+.from-top {
+  transform: translateY(-100%);
+}
+
+/* ACTIVA */
+.active {
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 2;
+}
+
+/* SALIDA */
+.exit-top {
+  transform: translateY(-20%);
+  opacity: 0;
+}
+
+.exit-bottom {
+  transform: translateY(20%);
+  opacity: 0;
+}
+
+/* BOTÓN */
+.inspect-btn {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 28px;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+  text-decoration: none;
+}
+
+.inspect-btnc33 {
+  position: absolute;
+  bottom: 40px;
+  left: 15%;
+  transform: translateX(-50%);
+  padding: 14px 28px;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+  text-decoration: none;
+}
+.inspect-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: translateX(-50%) scale(1.05);
+}
+
+/* PANEL TEXTO (ROJO) */
+.text-panel {
+  width: 40%;
+  background: #e3312c;
+  color: rgb(255, 167, 35);
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  background-image: url(../img/fondito.png);
+}
+
+#text {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* SECCIONES DE SCROLL */
+.step {
+  height: 100vh;
+}
+@media (max-width: 768px) {
+  /* Layout pasa a vertical */
+  .fixed-layout {
+    position: relative;
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* Panel imagen */
+  .image-panel {
+    width: 100%;
+    height: 70vh;
+    position: sticky;
+    top: 0;
+  }
+
+  /* Panel texto */
+  .text-panel {
+    width: 100%;
+    padding: 32px;
+    min-height: 60vh;
+  }
+
+  /* Texto más compacto */
+  #text h2 {
+    font-size: 24px;
+  }
+
+  #text p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Botón más accesible */
+  .inspect-btn {
+    bottom: 20px;
+    padding: 12px 22px;
+    font-size: 14px;
+  }
+
+  /* Scroll sections más cortas */
+  .step {
+    height: 80vh;
+  }
+}

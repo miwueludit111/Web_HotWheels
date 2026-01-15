@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: system-ui, sans-serif;
+  background: rgb(0, 13, 43);
+  color: white;
+  font-family: hea;
+
+  background: linear-gradient(to bottom, #1e3c72, #021330);
+
+  width: 100%;
+  height: auto;
+}
+a {
+  text-decoration: none; /* quita el subrayado */
+  color: #dbd834; /* color del enlace wwww*/
+}
+.curvas {
+  position: absolute;
+  z-index: -1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.curvas1 {
+  position: absolute;
+  z-index: +5000000;
+  height: 50%;
+  width: 50%;
+}
+
+/* INTRO */
+.intro {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: hea;
+}
+
+.intro h1 {
+  font-size: clamp(4rem, 6vw, 4rem);
+}
+@font-face {
+  font-family: "hea";
+  src: url(../font/heavy\ heap\ rg.otf);
+}
+/* SCROLL */
+.scroll-section {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  height: 100%;
+}
+
+/* PANEL */
+.panel {
+  min-width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CONTENIDO CENTRAL (DEFINE ESCALA) */
+.panel-content {
+  position: relative;
+  width: min(90vw, 1200px);
+  height: min(80vh, 700px);
+  border-radius: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* IMAGEN COMPLETA */
+.panel-content img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* UI SOBRE LA IMAGEN */
+.panel-ui {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+/* TEXTO ADAPTATIVO */
+.panel-text {
+  font-size: clamp(1.2rem, 3vw, 2.2rem);
+  opacity: 0;
+  text-align: center;
+}
+
+/* BOTÓN ADAPTATIVO */
+.panel-btn {
+  padding: 0.7em 1.6em;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  background-color: red;
+  color: rgb(255, 232, 24);
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  border-radius: 25%;
+  border-bottom: darkorange;
+  font-family: "hea";
+}
