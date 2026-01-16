@@ -11,7 +11,7 @@
     <!-- CONTENIDO FIJO -->
     <div class="fixed-layout">
       <div class="image-panel">
-        <button class="inspect-btnc33">
+        <button class="inspect-btnc33" id="comprar-btn">
           <a href="carrito FULL.html">COMPRAR</a>
         </button>
         <div class="img active">
@@ -31,14 +31,15 @@
         </div>
 
         <button class="inspect-btn">
-          <a href="modelo3d.html">INSPECCIONAR</a>
+          <a href="homepage.html">HOME</a>
         </button>
       </div>
 
       <div class="text-panel">
         <div id="text">
           <h2>Rompecráneos</h2>
-          <p>el terror de las carreteras</p>
+          <p>El terror de las carreteras</p>
+          <p>Hazte con él por 10,19 €</p>
         </div>
         <button class="inspect-btn">
           <a href="garaje.html">VOLVER A COLECCIONES</a>
@@ -51,33 +52,53 @@
       class="step"
       data-index="0"
       data-title="Rompecráneos"
-      data-text="el terror de las carreteras"
+      data-text="El terror de las carreteras / Hazte con él por 10,19 €"
     ></section>
     <section
       class="step"
       data-index="1"
       data-title="Jaguar nocturno"
-      data-text="No ha visto unos faros traseros en la vida"
+      data-text="No disponible por el momento"
     ></section>
     <section
       class="step"
       data-index="2"
       data-title="Turbina de jet"
-      data-text="Texto 3"
+      data-text="No disponible por el momento"
     ></section>
     <section
       class="step"
       data-index="3"
       data-title="Sombra de velocidad"
-      data-text="Texto 4"
+      data-text="No disponible por el momento"
     ></section>
     <section
       class="step"
       data-index="4"
       data-title="Doble embrague"
-      data-text="Texto 5"
+      data-text="No disponible por el momento"
     ></section>
 
     <script src="js/colecionable.js"></script>
   </body>
+
+<script>
+  const comprarBtn = document.getElementById('comprar-btn');
+  const link = comprarBtn.querySelector('a');
+
+  window.addEventListener('scroll', () => {
+    
+    if (window.scrollY > 50) {
+      link.style.pointerEvents = 'none'; 
+      link.style.opacity = '0.5';        
+      comprarBtn.style.cursor = 'not-allowed';
+    } else {
+      link.style.pointerEvents = 'auto'; 
+      link.style.opacity = '1';
+      comprarBtn.style.cursor = 'pointer';
+    }
+  });
+</script>
+
+
 </html>

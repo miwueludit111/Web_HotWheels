@@ -287,3 +287,4 @@ function sAddTestProducts() {
   sRenderCart();
   console.log('Productos de prueba añadidos al carrito');
 }
+
