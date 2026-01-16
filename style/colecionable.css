@@ -393,6 +393,19 @@
     overflow-y: auto;
   }
 
+  /* Asegurar que el header/navbar esté siempre visible */
+  header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1100 !important;
+  }
+
+  header .navbar {
+    z-index: 1100 !important;
+  }
+
   /* Layout fijo centrado en pantalla */
   .fixed-layout {
     position: fixed;
@@ -402,6 +415,8 @@
     min-height: 100vh;
     z-index: 10;
     transition: transform 0.5s ease;
+    padding-top: 60px;
+    /* Espacio para el navbar */
   }
 
   /* Cuando se puede hacer scroll, el layout se convierte en relative */

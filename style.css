@@ -706,6 +706,44 @@ h4 {
   z-index: 1000;
 }
 
+/* Navbar Toggler (Hamburger Button) */
+.navbar-toggler {
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 8px 12px;
+  border-radius: 8px;
+  z-index: 1050;
+  position: relative;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.navbar-toggler i {
+  color: #fff;
+  font-size: 1.5rem;
+  display: block;
+}
+
+/* Navbar Links */
+.navbar .nav-link {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #ff2e2e;
+}
+
+.navbar .nav-link.active {
+  color: #ff2e2e !important;
+}
+
 /* ---------- S-NAVBAR-CART ---------- */
 .s-navbar-cart {
   position: relative;

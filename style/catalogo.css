@@ -213,4 +213,17 @@ a {
     /* evita depender del hover */
     border-radius: 20%;
   }
+
+  /* Asegurar que el header/navbar esté siempre visible */
+  header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1100 !important;
+  }
+
+  header .navbar {
+    z-index: 1100 !important;
+  }
 }
