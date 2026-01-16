@@ -62,6 +62,9 @@ function sAddToCart(id, name, price, image) {
 
   sSaveCart(cart);
   sUpdateCartCount();
+
+  // Mostrar dropdown cuando se añade un producto
+  sShowCartDropdown();
 }
 
 // Eliminar producto del carrito
@@ -237,7 +240,7 @@ function sRenderPaymentSummary() {
   sUpdateTotals();
 }
 
-// Actualizar contador del carrito (para navbar si lo añades)
+// Actualizar contador del carrito y renderizar dropdown
 function sUpdateCartCount() {
   const cart = sGetCart();
   const count = cart.reduce((total, item) => total + item.quantity, 0);
@@ -245,7 +248,62 @@ function sUpdateCartCount() {
 
   if (countElement) {
     countElement.textContent = count;
-    countElement.style.display = count > 0 ? 'block' : 'none';
+    if (count > 0) {
+      countElement.classList.add('visible');
+    } else {
+      countElement.classList.remove('visible');
+    }
+  }
+
+  // Renderizar dropdown del carrito
+  sRenderCartDropdown();
+}
+
+// Renderizar dropdown del carrito en navbar
+function sRenderCartDropdown() {
+  const cart = sGetCart();
+  const dropdownItems = document.getElementById('s-cart-dropdown-items');
+  const dropdownTotal = document.getElementById('s-cart-dropdown-total');
+
+  if (!dropdownItems) return;
+
+  if (cart.length === 0) {
+    dropdownItems.innerHTML = '<p class="s-cart-dropdown-empty">Tu carrito está vacío</p>';
+    if (dropdownTotal) dropdownTotal.textContent = '0,00 €';
+    return;
+  }
+
+  // Renderizar items
+  dropdownItems.innerHTML = cart.map(item => `
+    <div class="s-cart-dropdown-item">
+      <div class="s-cart-dropdown-item-img">
+        <img src="${item.image}" alt="${item.name}">
+      </div>
+      <div class="s-cart-dropdown-item-info">
+        <p class="s-cart-dropdown-item-name">${item.name}</p>
+        <p class="s-cart-dropdown-item-details">Cantidad: ${item.quantity}</p>
+      </div>
+      <span class="s-cart-dropdown-item-price">${sFormatPrice(item.price * item.quantity)}</span>
+    </div>
+  `).join('');
+
+  // Actualizar total
+  const subtotal = sCalculateSubtotal();
+  const FREE_SHIPPING_THRESHOLD = 50.00;
+  const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : S_SHIPPING_COST;
+  const total = subtotal + shippingCost;
+
+  if (dropdownTotal) dropdownTotal.textContent = sFormatPrice(total);
+}
+
+// Mostrar dropdown temporalmente (cuando se añade un producto)
+function sShowCartDropdown() {
+  const dropdown = document.getElementById('s-cart-dropdown');
+  if (dropdown) {
+    dropdown.classList.add('show');
+    setTimeout(() => {
+      dropdown.classList.remove('show');
+    }, 2500);
   }
 }
 
