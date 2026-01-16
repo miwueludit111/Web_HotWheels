@@ -5,7 +5,6 @@
     <title>Productos</title>
     <link rel="stylesheet" href="style/colecionable.css" />
   </head>
-  
 
   <body>
     <!-- CONTENIDO FIJO -->
@@ -18,7 +17,7 @@
           <img src="img/16328354996580.jpg" />
         </div>
         <div class="img">
-          <img src="img/catalogo-cochereal.PNG" />
+          <img src="img/coche-en-3d.png" />
         </div>
         <div class="img">
           <img src="img/catalogo-3-verde.png" />
@@ -82,23 +81,20 @@
     <script src="js/colecionable.js"></script>
   </body>
 
-<script>
-  const comprarBtn = document.getElementById('comprar-btn');
-  const link = comprarBtn.querySelector('a');
+  <script>
+    const comprarBtn = document.getElementById("comprar-btn");
+    const link = comprarBtn.querySelector("a");
 
-  window.addEventListener('scroll', () => {
-    
-    if (window.scrollY > 50) {
-      link.style.pointerEvents = 'none'; 
-      link.style.opacity = '0.5';        
-      comprarBtn.style.cursor = 'not-allowed';
-    } else {
-      link.style.pointerEvents = 'auto'; 
-      link.style.opacity = '1';
-      comprarBtn.style.cursor = 'pointer';
-    }
-  });
-</script>
-
-
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        link.style.pointerEvents = "none";
+        link.style.opacity = "0.5";
+        comprarBtn.style.cursor = "not-allowed";
+      } else {
+        link.style.pointerEvents = "auto";
+        link.style.opacity = "1";
+        comprarBtn.style.cursor = "pointer";
+      }
+    });
+  </script>
 </html>

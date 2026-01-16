@@ -122,15 +122,6 @@ a {
   border-bottom: darkorange;
   font-family: "hea";
 }
-.footer {
-  background: #8b0000;
-  padding: 60px 0 20px;
-}
-
-.footer ul {
-  list-style: none;
-  padding: 0;
-}
 
 @media (max-width: 768px) {
   /* INTRO */
