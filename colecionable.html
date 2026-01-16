@@ -24,8 +24,8 @@
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
             class="bi bi-three-dots-vertical"></i>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
             <li class="nav-item px-2">
               <a class="nav-link" href="index.html">HOME</a>
             </li>
@@ -36,15 +36,34 @@
               <a class="nav-link active" href="garaje.html">VER COLECCIONES</a>
             </li>
             <li class="nav-item px-2">
-              <a class="nav-link" href="carrito.html">CARRITO</a>
-            </li>
-            <li class="nav-item px-2">
               <a class="nav-link" href="https://998174.cargo.site/" target="_blank">BLOG</a>
             </li>
             <li class="nav-item px-2">
               <a class="nav-link" href="modelo3d.html">3D</a>
             </li>
           </ul>
+          <!-- Cart Icon with Dropdown -->
+          <div class="s-navbar-cart">
+            <a href="carrito.html" class="s-cart-icon-link" id="s-cart-icon">
+              <i class="bi bi-cart3"></i>
+              <span class="s-cart-badge" id="s-cart-count">0</span>
+            </a>
+            <div class="s-cart-dropdown" id="s-cart-dropdown">
+              <div class="s-cart-dropdown-header">
+                <span>Tu Carrito</span>
+              </div>
+              <div class="s-cart-dropdown-items" id="s-cart-dropdown-items">
+                <p class="s-cart-dropdown-empty">Tu carrito está vacío</p>
+              </div>
+              <div class="s-cart-dropdown-footer">
+                <div class="s-cart-dropdown-total">
+                  <span>Total:</span>
+                  <span id="s-cart-dropdown-total">0,00 €</span>
+                </div>
+                <a href="carrito.html" class="s-cart-dropdown-btn">Ver Carrito</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
