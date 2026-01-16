@@ -9,6 +9,9 @@ let currentIndex = 0;
 const totalImages = images.length;
 let isTransitioning = false; // Prevenir transiciones múltiples
 
+// Detectar si es móvil
+let isMobile = window.innerWidth <= 768;
+
 // Actualizar el contador total
 if (totalNumEl) {
   totalNumEl.textContent = String(totalImages).padStart(2, '0');
@@ -78,6 +81,19 @@ if (buyBtn) {
   });
 }
 
+// Función para habilitar/deshabilitar scroll al footer
+function updateScrollState() {
+  if (isMobile) {
+    if (currentIndex >= totalImages - 1) {
+      // Llego al último coche, habilitar scroll
+      document.body.classList.add('can-scroll');
+    } else {
+      // No está en el último coche, deshabilitar scroll
+      document.body.classList.remove('can-scroll');
+    }
+  }
+}
+
 // Función para cambiar de coche
 function changeCar(newIndex) {
   if (newIndex === currentIndex || isTransitioning) return;
@@ -143,31 +159,117 @@ function changeCar(newIndex) {
 
   currentIndex = newIndex;
 
+  // Actualizar estado del scroll
+  updateScrollState();
+
   // Cooldown para prevenir rebotes
   setTimeout(() => {
     isTransitioning = false;
   }, 600);
 }
 
-// Observer para el scroll - con rootMargin para detectar solo cuando la sección está centrada
-const observer = new IntersectionObserver(
-  (entries) => {
+// =============================================
+// MÓVIL: Navegación por gestos táctiles y wheel
+// =============================================
+
+if (isMobile) {
+  let touchStartY = 0;
+  let touchEndY = 0;
+  const minSwipeDistance = 50;
+
+  // Detectar inicio del toque
+  document.addEventListener('touchstart', (e) => {
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  // Detectar fin del toque y calcular dirección
+  document.addEventListener('touchend', (e) => {
+    // Si puede hacer scroll (último coche), no interceptar
+    if (document.body.classList.contains('can-scroll')) {
+      // Solo interceptar si está en la parte superior y hace swipe up
+      if (window.scrollY > 50) return;
+    }
+
+    touchEndY = e.changedTouches[0].screenY;
+    const swipeDistance = touchStartY - touchEndY;
+
+    if (Math.abs(swipeDistance) > minSwipeDistance) {
+      if (swipeDistance > 0) {
+        // Swipe hacia arriba - siguiente coche
+        if (currentIndex < totalImages - 1) {
+          changeCar(currentIndex + 1);
+        }
+      } else {
+        // Swipe hacia abajo - coche anterior
+        if (currentIndex > 0) {
+          changeCar(currentIndex - 1);
+        }
+      }
+    }
+  }, { passive: true });
+
+  // También soportar wheel en móvil (para dispositivos táctiles con trackpad)
+  document.addEventListener('wheel', (e) => {
+    // Si puede hacer scroll y no está en la parte superior, permitir scroll normal
+    if (document.body.classList.contains('can-scroll') && window.scrollY > 10) {
+      return;
+    }
+
+    // Si está haciendo scroll hacia arriba en la parte superior, volver al coche anterior
+    if (document.body.classList.contains('can-scroll') && e.deltaY < 0 && window.scrollY <= 10) {
+      if (currentIndex > 0) {
+        e.preventDefault();
+        document.body.classList.remove('can-scroll');
+        window.scrollTo(0, 0);
+        changeCar(currentIndex - 1);
+      }
+      return;
+    }
+
     if (isTransitioning) return;
 
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-        const newIndex = Number(entry.target.dataset.index);
-        changeCar(newIndex);
-      }
-    });
-  },
-  {
-    threshold: 0.5,
-    rootMargin: "-20% 0px -20% 0px" // Solo detecta cuando está en el 60% central de la pantalla
-  }
-);
+    e.preventDefault();
 
-document.querySelectorAll(".step").forEach((step) => observer.observe(step));
+    if (e.deltaY > 0) {
+      // Scroll down - siguiente coche
+      if (currentIndex < totalImages - 1) {
+        changeCar(currentIndex + 1);
+      }
+    } else {
+      // Scroll up - coche anterior
+      if (currentIndex > 0) {
+        changeCar(currentIndex - 1);
+      }
+    }
+  }, { passive: false });
+}
+
+// =============================================
+// DESKTOP: IntersectionObserver para scroll
+// =============================================
+
+if (!isMobile) {
+  const observerOptions = {
+    threshold: 0.5,
+    rootMargin: "-20% 0px -20% 0px"
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (isTransitioning) return;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          const newIndex = Number(entry.target.dataset.index);
+          changeCar(newIndex);
+        }
+      });
+    },
+    observerOptions
+  );
+
+  document.querySelectorAll(".step").forEach((step) => observer.observe(step));
+}
 
 // Asegurar que la página empiece en el coche 1
 window.addEventListener("load", () => {
@@ -175,12 +277,14 @@ window.addEventListener("load", () => {
   currentIndex = 0;
   updateCounter(0);
   updateBuyButton(0);
+  updateScrollState();
 });
 
-// Ocultar indicador de scroll después del primer scroll
+// Ocultar indicador de scroll después del primer cambio de coche
 let hasScrolled = false;
-window.addEventListener("scroll", () => {
-  if (!hasScrolled && window.scrollY > 100) {
+
+function hideScrollIndicator() {
+  if (!hasScrolled && currentIndex > 0) {
     hasScrolled = true;
     if (scrollIndicator) {
       scrollIndicator.style.opacity = "0";
@@ -189,5 +293,25 @@ window.addEventListener("scroll", () => {
         scrollIndicator.style.display = "none";
       }, 500);
     }
+  }
+}
+
+// En desktop, ocultar con scroll normal
+if (!isMobile) {
+  window.addEventListener("scroll", () => {
+    if (!hasScrolled && window.scrollY > 100) {
+      hideScrollIndicator();
+    }
+  });
+}
+
+// Actualizar isMobile en resize
+window.addEventListener('resize', () => {
+  const wasMobile = isMobile;
+  isMobile = window.innerWidth <= 768;
+
+  // Si cambia de móvil a desktop o viceversa, recargar para aplicar los event listeners correctos
+  if (wasMobile !== isMobile) {
+    location.reload();
   }
 });

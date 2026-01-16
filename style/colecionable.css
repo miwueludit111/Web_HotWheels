@@ -382,30 +382,68 @@
 
 @media (max-width: 768px) {
 
-  /* Layout pasa a vertical */
+  /* Body - sin scroll hasta llegar al último coche */
+  body {
+    overflow: hidden;
+    overflow-x: hidden;
+  }
+
+  /* Cuando se activa el scroll (clase añadida por JS) */
+  body.can-scroll {
+    overflow-y: auto;
+  }
+
+  /* Layout fijo centrado en pantalla */
   .fixed-layout {
-    position: relative;
+    position: fixed;
+    inset: 0;
     flex-direction: column;
+    height: 100vh;
+    min-height: 100vh;
+    z-index: 10;
+    transition: transform 0.5s ease;
+  }
+
+  /* Cuando se puede hacer scroll, el layout se convierte en relative */
+  body.can-scroll .fixed-layout {
+    position: relative;
     height: auto;
+    min-height: 100vh;
   }
 
   /* Panel imagen */
   .image-panel {
     width: 100%;
-    height: 60vh;
+    height: 45vh;
+    flex-shrink: 0;
+  }
+
+  body.can-scroll .image-panel {
     position: sticky;
     top: 0;
+    z-index: 1;
   }
 
   .img {
-    padding: 40px;
+    padding: 30px;
   }
 
-  /* Panel texto */
+  .img img {
+    max-width: 85%;
+    max-height: 70%;
+  }
+
+  /* Panel texto - ocupa el resto del espacio */
   .text-panel {
     width: 100%;
-    padding: 40px 24px;
-    min-height: 50vh;
+    padding: 30px 20px;
+    flex: 1;
+    min-height: auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   /* Contador */
@@ -427,15 +465,15 @@
 
   /* Texto más compacto */
   #text h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .col-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .col-price {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   /* Botón comprar */
@@ -444,6 +482,7 @@
     font-size: 14px;
     width: 100%;
     justify-content: center;
+    margin-top: 24px;
   }
 
   /* Botón volver */
@@ -452,16 +491,35 @@
     top: auto;
     bottom: 20px;
     left: 20px;
+    z-index: 1001;
     padding: 10px 16px;
   }
 
-  /* Indicador de scroll */
+  /* Indicador de scroll en móvil */
   .col-scroll-indicator {
+    display: flex;
     bottom: 20px;
   }
 
-  /* Scroll sections más cortas */
+  .col-scroll-indicator span {
+    font-size: 10px;
+  }
+
+  /* Ocultar indicador cuando se puede hacer scroll al footer */
+  body.can-scroll .col-scroll-indicator {
+    display: none;
+  }
+
+  /* Scroll sections - siempre ocultas en móvil (usamos touch/wheel en su lugar) */
   .step {
-    height: 60vh;
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Footer sin espaciado extra en móvil */
+  body.can-scroll .footer {
+    margin-top: 0;
   }
 }
