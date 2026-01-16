@@ -666,8 +666,477 @@ h4 {
   background-size: cover;
 }
 
-.home-header>div>div:nth-child(1) {
-  height: 80vh;
+/* =====================================================
+   HOMEPAGE SECTIONS - Rediseño mejorado
+   ===================================================== */
+
+/* ---------- HOME HEADER / HERO FULLSCREEN ---------- */
+.home-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("img/FondoJuego2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-content .logo-principal {
+  max-width: 600px;
+  width: 90%;
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  animation: bounceDown 2s infinite;
+  z-index: 2;
+}
+
+.hero-scroll-indicator i {
+  font-size: 1.5rem;
+}
+
+@keyframes bounceDown {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.hero-fire {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.hero-fire img {
+  width: 100%;
+  display: block;
+}
+
+/* ---------- SECCIÓN HISTORIA ---------- */
+.historia-section {
+  background: linear-gradient(180deg, #0c1022 0%, #151839 50%, #0c1022 100%);
+  padding: 100px 0;
+}
+
+.historia-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.historia-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.historia-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff2e2e, #ff6b35);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.historia-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  color: #fff;
+  margin: 0;
+}
+
+.historia-title span {
+  background: linear-gradient(90deg, #ff2e2e, #ffa500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.historia-divider {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff2e2e, #ffa500);
+  margin: 30px auto 0;
+  border-radius: 2px;
+}
+
+.historia-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.historia-text p {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+.historia-image {
+  position: relative;
+}
+
+.historia-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(255, 46, 46, 0.2);
+}
+
+.historia-image-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(255, 46, 46, 0.3) 0%, transparent 70%);
+  z-index: -1;
+  filter: blur(40px);
+}
+
+@media (max-width: 900px) {
+  .historia-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .historia-title {
+    font-size: 2rem;
+  }
+
+  .historia-image {
+    order: -1;
+  }
+}
+
+/* ---------- SECCIÓN COLECCIONES ---------- */
+.colecciones-section {
+  background-image: url("img/FondoJuego2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.colecciones-fire-top,
+.colecciones-fire-bottom {
+  width: 100%;
+}
+
+.colecciones-fire-top img,
+.colecciones-fire-bottom img {
+  width: 100%;
+}
+
+.colecciones-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 60px 60px 80px;
+}
+
+.colecciones-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.colecciones-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  color: #fff;
+  margin: 0 0 15px;
+}
+
+.colecciones-title span {
+  background: linear-gradient(90deg, #ffa500, #ff6b35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.colecciones-subtitle {
+  font-size: 1.3rem;
+  color: #aaa;
+  margin: 0;
+}
+
+.colecciones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  justify-items: center;
+}
+
+.coleccion-card {
+  width: 100%;
+  max-width: 450px;
+  background: linear-gradient(145deg, #1a1f4a, #0f1330);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.coleccion-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(255, 46, 46, 0.25);
+}
+
+.coleccion-card-image {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+}
+
+.coleccion-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.coleccion-card:hover .coleccion-card-image img {
+  transform: scale(1.1);
+}
+
+.coleccion-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.coleccion-card-content {
+  padding: 25px;
+  text-align: center;
+  background: linear-gradient(135deg, rgb(255, 167, 35), #ff6b35);
+}
+
+.coleccion-card-content h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.coleccion-card-content p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.colecciones-cta {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.colecciones-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #f26522, #ff2e2e);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 18px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(255, 46, 46, 0.3);
+}
+
+.colecciones-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 46, 46, 0.5);
+  color: #fff;
+}
+
+.colecciones-btn i {
+  transition: transform 0.3s ease;
+}
+
+.colecciones-btn:hover i {
+  transform: translateX(5px);
+}
+
+@media (max-width: 1100px) {
+  .colecciones-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .colecciones-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .colecciones-title {
+    font-size: 2rem;
+  }
+
+  .coleccion-card {
+    max-width: 100%;
+  }
+}
+
+/* ---------- SECCIÓN VIDEOJUEGO ---------- */
+.videojuego-section {
+  background: linear-gradient(180deg, #0c1022 0%, #151839 50%, #0c1022 100%);
+  position: relative;
+}
+
+.videojuego-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 100px 60px;
+}
+
+.videojuego-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.videojuego-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.videojuego-logo {
+  max-width: 500px;
+  width: 100%;
+}
+
+.videojuego-description {
+  font-size: 1.25rem;
+  line-height: 1.9;
+  color: #ccc;
+  margin: 0;
+}
+
+.videojuego-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(135deg, #ff2e2e, #ff6b35);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 20px 45px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  box-shadow: 0 15px 40px rgba(255, 46, 46, 0.35);
+  width: fit-content;
+}
+
+.videojuego-cta:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 25px 60px rgba(255, 46, 46, 0.5);
+  color: #fff;
+}
+
+.videojuego-cta i {
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+}
+
+.videojuego-cta:hover i {
+  transform: rotate(15deg);
+}
+
+.videojuego-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.videojuego-gif-container {
+  position: relative;
+  max-width: 100%;
+}
+
+.videojuego-gif {
+  width: 100%;
+  max-width: 750px;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.videojuego-gif-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255, 46, 46, 0.2) 0%, transparent 60%);
+  z-index: -1;
+  filter: blur(60px);
+}
+
+.videojuego-fire {
+  width: 100%;
+}
+
+.videojuego-fire img {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .videojuego-content {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    text-align: center;
+  }
+
+  .videojuego-info {
+    align-items: center;
+  }
+
+  .videojuego-logo {
+    max-width: 300px;
+  }
+
+  .videojuego-visual {
+    order: -1;
+  }
 }
 
 #colecciones {
