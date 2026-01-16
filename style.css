@@ -1667,3 +1667,91 @@ a {
     height: 10px;
   }
 }
+
+/* Videojuegos - Price and Cart Button */
+.vj-slide-price {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #ff6b35;
+  margin: 0 0 20px;
+  text-shadow: 0 2px 20px rgba(255, 107, 53, 0.5);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: vjSlideIn 0.6s ease forwards 0.55s;
+}
+
+.vj-slide-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: vjSlideIn 0.6s ease forwards 0.7s;
+}
+
+.vj-add-cart-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #ff6b35, #ffa500);
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px 36px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
+}
+
+.vj-add-cart-btn:hover {
+  background: linear-gradient(135deg, #ffa500, #ffb733);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(255, 165, 0, 0.5);
+}
+
+.vj-add-cart-btn.added {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  box-shadow: 0 8px 30px rgba(76, 175, 80, 0.4);
+}
+
+.vj-add-cart-btn i {
+  font-size: 1.2rem;
+}
+
+/* Reset animation for buttons container when not active */
+.vj-slide:not(.active) .vj-slide-buttons,
+.vj-slide:not(.active) .vj-slide-price {
+  animation: none;
+  opacity: 0;
+}
+
+/* Responsive for new elements */
+@media (max-width: 768px) {
+  .vj-slide-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .vj-add-cart-btn {
+    padding: 14px 28px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vj-slide-price {
+    font-size: 1.2rem;
+  }
+
+  .vj-add-cart-btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+}
