@@ -97,9 +97,9 @@ function sCalculateSubtotal() {
 }
 
 // Formatear precio
-// function sFormatPrice(price) {
-//   return price.toFixed(2).replace('.', ',') + ' €';
-// }
+function sFormatPrice(price) {
+  return price.toFixed(2).replace('.', ',') + ' €';
+}
 
 // ========== RENDERIZADO ==========
 
@@ -162,16 +162,45 @@ function sRenderCart() {
 // Actualizar totales
 function sUpdateTotals() {
   const subtotal = sCalculateSubtotal();
-  const total = subtotal + S_SHIPPING_COST;
+  const FREE_SHIPPING_THRESHOLD = 50.00;
+
+  // Calcular envío: gratis si subtotal >= 50€
+  const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : S_SHIPPING_COST;
+  const total = subtotal + shippingCost;
+  const remainingForFreeShipping = FREE_SHIPPING_THRESHOLD - subtotal;
 
   // Página carrito
   const subtotalEl = document.getElementById('s-subtotal');
   const envioEl = document.getElementById('s-envio');
   const totalEl = document.getElementById('s-total');
+  const freeShippingMsgEl = document.getElementById('s-free-shipping-msg');
 
   if (subtotalEl) subtotalEl.textContent = sFormatPrice(subtotal);
-  if (envioEl) envioEl.textContent = sFormatPrice(S_SHIPPING_COST);
+
+  if (envioEl) {
+    if (shippingCost === 0) {
+      envioEl.textContent = '¡GRATIS!';
+      envioEl.style.color = '#4CAF50';
+    } else {
+      envioEl.textContent = sFormatPrice(shippingCost);
+      envioEl.style.color = '';
+    }
+  }
+
   if (totalEl) totalEl.textContent = sFormatPrice(total);
+
+  // Mostrar mensaje de cuánto falta para envío gratis
+  if (freeShippingMsgEl) {
+    if (subtotal > 0 && remainingForFreeShipping > 0) {
+      freeShippingMsgEl.innerHTML = `<i class="bi bi-truck"></i> ¡Añade <strong>${sFormatPrice(remainingForFreeShipping)}</strong> más para envío GRATIS!`;
+      freeShippingMsgEl.style.display = 'block';
+    } else if (subtotal >= FREE_SHIPPING_THRESHOLD) {
+      freeShippingMsgEl.innerHTML = `<i class="bi bi-check-circle-fill"></i> ¡Tienes envío GRATIS!`;
+      freeShippingMsgEl.style.display = 'block';
+    } else {
+      freeShippingMsgEl.style.display = 'none';
+    }
+  }
 
   // Página pago
   const subtotalPagoEl = document.getElementById('s-subtotal-pago');
@@ -179,7 +208,15 @@ function sUpdateTotals() {
   const totalPagoEl = document.getElementById('s-total-pago');
 
   if (subtotalPagoEl) subtotalPagoEl.textContent = sFormatPrice(subtotal);
-  if (envioPagoEl) envioPagoEl.textContent = sFormatPrice(S_SHIPPING_COST);
+  if (envioPagoEl) {
+    if (shippingCost === 0) {
+      envioPagoEl.textContent = '¡GRATIS!';
+      envioPagoEl.style.color = '#4CAF50';
+    } else {
+      envioPagoEl.textContent = sFormatPrice(shippingCost);
+      envioPagoEl.style.color = '';
+    }
+  }
   if (totalPagoEl) totalPagoEl.textContent = sFormatPrice(total);
 }
 
@@ -544,3 +581,37 @@ function sAddTestProducts() {
 
 })();
 
+// ========== VIDEOJUEGOS - ADD TO CART BUTTONS ==========
+document.addEventListener('DOMContentLoaded', function () {
+  const addCartButtons = document.querySelectorAll('.vj-add-cart-btn');
+
+  addCartButtons.forEach(button => {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const id = this.dataset.id;
+      const name = this.dataset.name;
+      const price = parseFloat(this.dataset.price);
+      const image = this.dataset.image;
+
+      // Usar la función global sAddToCart
+      if (typeof sAddToCart === 'function') {
+        sAddToCart(id, name, price, image);
+
+        // Feedback visual
+        const span = this.querySelector('span');
+        const originalText = span.textContent;
+        span.textContent = '¡Añadido!';
+        this.classList.add('added');
+
+        setTimeout(() => {
+          span.textContent = originalText;
+          this.classList.remove('added');
+        }, 1500);
+      } else {
+        console.error('sAddToCart no está disponible');
+      }
+    });
+  });
+});

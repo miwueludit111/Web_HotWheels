@@ -257,9 +257,20 @@ h4 {
 }
 
 /* ---------- S-CARRITO ---------- */
+/* Wrapper para sticky footer */
+.s-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.s-page-wrapper .s-carrito {
+  flex: 1;
+}
+
 .s-carrito {
   padding: 60px 0;
-  min-height: 60vh;
+  min-height: auto;
 }
 
 .s-carrito-vacio {
@@ -508,6 +519,27 @@ h4 {
 
 .s-checkout-btn {
   margin-top: 25px;
+}
+
+/* ---------- S-FREE-SHIPPING-MSG ---------- */
+.s-free-shipping-msg {
+  display: none;
+  margin-top: 20px;
+  padding: 12px 15px;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.05));
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 8px;
+  color: #4CAF50;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.s-free-shipping-msg i {
+  margin-right: 8px;
+}
+
+.s-free-shipping-msg strong {
+  color: #fff;
 }
 
 .s-btn-finalizar {
