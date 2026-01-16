@@ -97,9 +97,9 @@ function sCalculateSubtotal() {
 }
 
 // Formatear precio
-function sFormatPrice(price) {
-  return price.toFixed(2).replace('.', ',') + ' €';
-}
+// function sFormatPrice(price) {
+//   return price.toFixed(2).replace('.', ',') + ' €';
+// }
 
 // ========== RENDERIZADO ==========
 

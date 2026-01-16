@@ -637,8 +637,8 @@ h4 {
 /* VICTORIA */
 
 .navbar{
-    background:rgba(255,255,255,0.2);
-    backdrop-filter:blur(6px);
+    background:rgba(255, 255, 255, 0);
+    /* backdrop-filter:blur(6px); */
     position: fixed;
     width: 100%;
 }
@@ -646,6 +646,11 @@ h4 {
 .nav-link {
   color: #ffff;
   font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #ff2e2e;   /* rojo al pasar el cursor */
 }
 
 .navbar-toggler {
@@ -654,7 +659,7 @@ h4 {
 }
 
 .home-header {
-  background-image: url("img/FondoJuego3.png");
+  background-image: url("img/FondoJuego2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -665,7 +670,7 @@ h4 {
 }
 
 #colecciones{
-  background-image: url("img/FondoJuego3.png");
+  background-image: url("img/FondoJuego2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -737,4 +742,66 @@ a {
 
 .close-btn:hover {
   background: rgba(0, 0, 0, 0.8);
+}
+
+
+
+.s-item-carrito {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+}
+
+.s-item-img {
+  width: 120px;
+  height: auto;
+  border-radius: 12px;
+}
+
+.s-item-info {
+  flex: 1;
+}
+
+.s-item-nombre {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.s-item-precio {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ff2e2e;
+  margin: 6px 0 0;
+}
+
+.s-item-btn {
+  padding: 12px 26px;
+  background: #ff2e2e;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.s-item-btn:hover {
+  background: #d82626;
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .s-item-carrito {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .s-item-btn {
+    width: 100%;
+  }
 }
