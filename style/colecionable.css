@@ -4,31 +4,89 @@
   margin: 0;
   padding: 0;
 }
-body {
-  font-family: hea;
-  font-size: 3rem;
+
+/* La tipografía del body se hereda de style.css */
+/* Aplicamos la fuente 'hea' solo a los paneles de contenido */
+.fixed-layout,
+.text-panel,
+.image-panel {
+  font-family: "hea", sans-serif;
 }
+
 @font-face {
   font-family: "hea";
   src: url(../font/heavy\ heap\ rg.otf);
 }
-a {
-  text-decoration: none; /* quita el subrayadocuiodao */
-  color: #dbd834; /* color del enlace */
+
+/* =============================================
+   BOTÓN VOLVER (ARRIBA IZQUIERDA)
+============================================= */
+.col-back-btn {
+  position: fixed;
+  top: 80px;
+  left: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
-/* LAYOUT FIJO */
+
+.col-back-btn:hover {
+  background: rgba(227, 49, 44, 0.9);
+  color: #fff;
+  transform: translateX(-4px);
+}
+
+.col-back-btn i {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.col-back-btn:hover i {
+  transform: translateX(-4px);
+}
+
+/* =============================================
+   LAYOUT FIJO
+============================================= */
 .fixed-layout {
   position: fixed;
   inset: 0;
   display: flex;
 }
 
-/* PANEL IMAGEN (AMARILLO) */
+/* =============================================
+   PANEL IMAGEN
+============================================= */
 .image-panel {
   width: 60%;
-  background: #3cabf5;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   position: relative;
   overflow: hidden;
+}
+
+/* Efecto de brillo de fondo */
+.image-panel::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(60, 171, 245, 0.15) 0%, transparent 60%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 /* IMÁGENES */
@@ -37,18 +95,29 @@ a {
   inset: 0;
   opacity: 0;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
 }
 
 .img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 90%;
+  max-height: 80%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+  transition: transform 0.5s ease;
+}
+
+.img.active img:hover {
+  transform: scale(1.05);
 }
 
 /* ESTADOS DE ENTRADA */
 .from-bottom {
   transform: translateY(100%);
 }
+
 .from-top {
   transform: translateY(-100%);
 }
@@ -71,69 +140,248 @@ a {
   opacity: 0;
 }
 
-/* BOTÓN */
-.inspect-btn {
+/* =============================================
+   INDICADOR DE SCROLL
+============================================= */
+.col-scroll-indicator {
   position: absolute;
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 14px 28px;
-  background: rgba(230, 3, 3, 0.966);
-  color: white;
-  border: none;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 500;
-  font-weight: bold;
-
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-  transition: background 0.3s ease, transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInOut 2s ease-in-out infinite;
   z-index: 10;
-  text-decoration: none;
 }
 
-.inspect-btnc33 {
-  position: absolute;
-  bottom: 40px;
-  left: 15%;
-  transform: translateX(-50%);
-  padding: 14px 28px;
-  background: rgb(238, 5, 5);
-  color: white;
-  border: none;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-  transition: background 0.3s ease, transform 0.3s ease;
-  z-index: 10;
-  text-decoration: none;
-  font-weight: bold;
+.col-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.5), transparent);
 }
 
+.col-scroll-indicator i {
+  font-size: 18px;
+  animation: bounce 1.5s ease-in-out infinite;
+}
 
-/* PANEL TEXTO (ROJO) */
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* =============================================
+   PANEL TEXTO
+============================================= */
 .text-panel {
   width: 40%;
-  background: #e3312c;
+  background: linear-gradient(180deg, #e3312c 0%, #c41e1e 100%);
   color: rgb(255, 255, 255);
   padding: 60px;
   display: flex;
-  align-items: center;
-  background-image: url(../img/fondito.png);
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Patrón de fondo */
+.text-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url(../img/fondito.png);
+  background-size: cover;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* =============================================
+   CONTADOR DE COCHES
+============================================= */
+.col-counter {
+  position: absolute;
+  top: 100px;
+  right: 40px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  opacity: 0.3;
+}
+
+#current-num {
+  color: #fff;
+  font-size: 72px;
+}
+
+.col-counter-divider {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+#total-num {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 36px;
+}
+
+/* =============================================
+   CONTENIDO DE TEXTO
+============================================= */
 #text {
+  position: relative;
+  z-index: 1;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* SECCIONES DE SCROLL */
-.step {
-  height: 100vh;
+#text h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3);
 }
+
+.col-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.9;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.col-price {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #ffd700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+/* =============================================
+   BOTÓN COMPRAR
+============================================= */
+.col-buy-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+  padding: 18px 32px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
+  color: #000;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.col-buy-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 50px rgba(255, 215, 0, 0.6);
+  color: #000;
+}
+
+.col-buy-btn i {
+  font-size: 20px;
+}
+
+.col-buy-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.col-buy-btn.added {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  box-shadow: 0 10px 40px rgba(76, 175, 80, 0.4);
+}
+
+.col-buy-btn {
+  border: none;
+  cursor: pointer;
+}
+
+/* =============================================
+   SECCIONES DE SCROLL
+============================================= */
+.step {
+  height: 70vh;
+}
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media (max-width: 992px) {
+  .col-back-btn {
+    top: 70px;
+    left: 16px;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .col-counter {
+    top: 80px;
+    right: 24px;
+    font-size: 32px;
+  }
+
+  #current-num {
+    font-size: 48px;
+  }
+
+  #total-num {
+    font-size: 24px;
+  }
+
+  #text h2 {
+    font-size: 2.2rem;
+  }
+
+  .col-price {
+    font-size: 1.8rem;
+  }
+}
+
 @media (max-width: 768px) {
+
   /* Layout pasa a vertical */
   .fixed-layout {
     position: relative;
@@ -144,39 +392,76 @@ a {
   /* Panel imagen */
   .image-panel {
     width: 100%;
-    height: 70vh;
+    height: 60vh;
     position: sticky;
     top: 0;
+  }
+
+  .img {
+    padding: 40px;
   }
 
   /* Panel texto */
   .text-panel {
     width: 100%;
-    padding: 32px;
-    min-height: 60vh;
+    padding: 40px 24px;
+    min-height: 50vh;
+  }
+
+  /* Contador */
+  .col-counter {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+
+  #current-num {
+    font-size: 36px;
+  }
+
+  #total-num {
+    font-size: 18px;
   }
 
   /* Texto más compacto */
   #text h2 {
-    font-size: 24px;
+    font-size: 1.8rem;
   }
 
-  #text p {
-    font-size: 16px;
-    line-height: 1.6;
+  .col-description {
+    font-size: 1rem;
   }
 
-  /* Botón más accesible */
-  .inspect-btn {
-    bottom: 20px;
-    padding: 12px 22px;
+  .col-price {
+    font-size: 1.5rem;
+  }
+
+  /* Botón comprar */
+  .col-buy-btn {
+    padding: 14px 24px;
     font-size: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Botón volver */
+  .col-back-btn {
+    position: fixed;
+    top: auto;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 16px;
+  }
+
+  /* Indicador de scroll */
+  .col-scroll-indicator {
+    bottom: 20px;
   }
 
   /* Scroll sections más cortas */
   .step {
-    height: 80vh;
+    height: 60vh;
   }
 }
-
-
