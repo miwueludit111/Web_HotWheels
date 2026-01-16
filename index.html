@@ -3,11 +3,14 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Videojuegos</title>
+  <title>Hot Wheels</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
   <link
@@ -16,31 +19,25 @@
 
 
   <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-
-
-  <header class="main-header">
-
-
+  <header>
     <nav class="navbar navbar-expand-lg sticky-top">
       <div class="container-fluid px-4">
-        <a class="navbar-brand" href="#">
-          <img src="img/isotipo.svg" alt="Logo" width="38" height="38">
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-          <i class="bi bi-three-dots-vertical"></i>
+        <a class="navbar-brand" href="#"><img src="img/isotipo.svg" alt="Logo" width="38" height="38"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+            class="bi bi-three-dots-vertical"></i>
         </button>
-
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item px-2">
-              <a class="nav-link" href="homepage.html">HOME</a>
+              <a class="nav-link active" href="index.html">HOME</a>
             </li>
             <li class="nav-item px-2">
-              <a class="nav-link active" href="index.html">VIDEOJUEGO</a>
+              <a class="nav-link" href="videojuegos.html">VIDEOJUEGO</a>
             </li>
             <li class="nav-item px-2">
               <a class="nav-link" href="garaje.html">VER COLECCIONES</a>
@@ -58,125 +55,131 @@
         </div>
       </div>
     </nav>
-
-
-    <section class="hero">
-      <div class="container hero-content">
-        <div class="row align-items-center">
-
-          <div class="col-lg-6 text-center text-lg-start">
-            <img src="img/HotWheelsUnleashed_DesignBattle_Contest_Logo-1.png" alt="Hot Wheels Unleashed"
-              class="hero-logo">
-            <p>
-              Vive la experiencia definitiva de Hot Wheels con pistas imposibles,
-              coches legendarios y pura adrenalina.
-            </p>
-          </div>
-
-          <div class="col-lg-6 text-center">
-            <div class="video-box">
-              <img src="img/videoseccionjuego.gif" alt="GIF del juego">
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
   </header>
 
+  <section class="home-header">
+    <div class="container-fluid text-center">
+      <div class="col align-content-center">
+        <img src="img/logotipo.png" class="img-fluid logo-principal" alt="Logo">
+      </div>
+      <div class="col">
+        <img src="img/fueguito.svg" class="img-fluid" alt="Logo">
+      </div>
+    </div>
+  </section>
 
 
-  <section class="titles">
-    <div class="container">
-      <h2 class="section-title">Nuestros títulos</h2>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="game-card">
-            <img src="img/card1.webp" alt="">
-            <h3>Hot Wheels Unleashed</h3>
+  <section id="historia">
+    <div class="container-fluid p-5">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <h1>Un futuro a toda velocidad</h1>
+          </div>
+          <div class="row py-2">
+            <p>Hot Wheels es una marca de autos a escala creada en 1968 por la empresa estadounidense Mattel. Nació con
+              la idea de ofrecer coches de juguete más rápidos, llamativos y realistas que los existentes en el mercado,
+              incorporando ruedas de baja fricción que permitían un mejor deslizamiento en las pistas. Desde sus
+              inicios, la marca se destacó por sus diseños inspirados en muscle cars, hot rods y autos de fantasía, así
+              como por su enfoque en la velocidad y la competencia, lo que rápidamente la hizo popular entre niños y
+              coleccionistas.</p>
+          </div>
+          <div class="row py-2">
+            <p>Con el paso del tiempo, Hot Wheels amplió su universo con pistas icónicas, colaboraciones con fabricantes
+              de autos reales y ediciones especiales que reforzaron su valor como objeto de colección. La marca logró
+              consolidarse como un referente cultural, influyendo en el diseño, el entretenimiento y la nostalgia de
+              varias generaciones. Hoy en día, Hot Wheels no solo representa juguetes, sino también creatividad,
+              innovación y pasión por el automovilismo en miniatura.</p>
           </div>
         </div>
-
-        <div class="col-md-4">
-          <div class="game-card">
-            <img src="img/card2.jpg" alt="">
-            <h3>Hot Wheels Unleashed 2</h3>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="game-card">
-            <img src="img/card3.jpg" alt="">
-            <h3>Hot Wheels Monster Trucks</h3>
+        <div class="col-md-6 align-content-center">
+          <div class="row ">
+            <img src="img/historia.webp" class="img-fluid" alt="">
           </div>
         </div>
       </div>
     </div>
   </section>
 
-
-  <section class="game-section">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 text-center text-lg-start">
-          <h2>Hot Wheels Unleashed</h2>
-          <p>
-            Hot Wheels lleva décadas revolucionando el mundo de los coches coleccionables,
-            despertando la pasión tanto de los más pequeños como de los coleccionistas.
-          </p>
-          <a href="https://www.amazon.es/Hot-Wheels-Unleashed-PS4-ESP/dp/B08XZ18WLY/ref=asc_df_B08XZ18WLY?mcid=7a92ba3779c63c819742298af4a28171&tag=googshopes-21&linkCode=df0&hvadid=699783436525&hvpos=&hvnetw=g&hvrand=3521096573838423550&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1005496&hvtargid=pla-1434787924463&hvocijid=3521096573838423550-B08XZ18WLY-&hvexpln=0&th=1"
-            class="cta-btn" target="_blank" rel="noopener noreferrer">
-            Hazte con él
-          </a>
+  <section id="colecciones">
+    <div class="container-fluid">
+      <img src="img/fueguito-reverso.svg" class="img-fluid" alt="Logo">
+    </div>
+    <div class="container-fluid p-5">
+      <div class="container-fluid">
+        <div class="row pb-4">
+          <div class="col">
+            <h1>Nuestras colecciones</h1>
+          </div>
         </div>
-        <div class="col-lg-6 text-center">
-          <img src="img/card1.webp" class="img-fluid">
+        <div class="row g-4">
+          <div class="col">
+            <div class="card h-100 text-center" style="width: 18rem;">
+              <img src="img/coleccion1.jpg" class="card-img-top" alt="...">
+              <div class="card-body align-content-center">
+                <p class="card-text">Colección F1</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 text-center" style="width: 18rem;">
+              <img src="img/coleccion2.avif" class="card-img-top" alt="...">
+              <div class="card-body align-content-center">
+                <p class="card-text">Colección Monster Trucks</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 text-center" style="width: 18rem;">
+              <img src="img/coleccion3.webp" class="card-img-top" alt="...">
+              <div class="card-body align-content-center">
+                <p class="card-text">Colección Classics</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5">
+          <div class="col text-center p-4">
+            <a class="btn btn-light btn-lg colec-btn" href="garaje.html" role="button">Descúbrelas aquí</a>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-
-
-  <section class="game-section alt">
-    <div class="container">
-      <div class="row align-items-center flex-lg-row-reverse">
-        <div class="col-lg-6 text-center text-lg-start">
-          <h2>Hot Wheels Unleashed 2</h2>
-          <p>
-            Nuevos coches, más velocidad, más acción y circuitos todavía más salvajes.
-          </p>
-          <a href="https://www.amazon.es/Hot-Wheels-Unleashed-TurbochargedTM-Playstation/dp/B0C6Q8NLFX/ref=asc_df_B0C6Q8NLFX?mcid=46dd515da1d833a4985445b672ecb5f8&tag=googshopes-21&linkCode=df0&hvadid=754071597769&hvpos=&hvnetw=g&hvrand=4745258807174383615&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1005496&hvtargid=pla-2244134728947&psc=1&hvocijid=4745258807174383615-B0C6Q8NLFX-&hvexpln=0"
-            class="cta-btn" target="_blank" rel="noopener noreferrer">
-            Hazte con él
-          </a>
-        </div>
-        <div class="col-lg-6 text-center">
-          <img src="img/card2.jpg" class="img-fluid">
-        </div>
-      </div>
+    <div class="container-fluid">
+      <img src="img/fueguito.svg" class="img-fluid" alt="Logo">
     </div>
   </section>
 
+  <section id="videojuego">
+    <div class="container-fluid p-5">
+      <div class="row justify-content-center">
 
-  <section class="game-section">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 text-center text-lg-start">
-          <h2>Hot Wheels Monster Trucks</h2>
-          <p>
-            Vive el caos total con los Monster Trucks más extremos jamás creados.
-          </p>
-          <a href="https://www.amazon.es/Wheels-Monster-Trucks-Mayhem-PlayStation/dp/B0DDCRRR2G/ref=asc_df_B0DDCRRR2G?mcid=6d951c4a45083577a2c8bd5f2d264f31&tag=googshopes-21&linkCode=df0&hvadid=754071597769&hvpos=&hvnetw=g&hvrand=13851434422160621387&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1005496&hvtargid=pla-2412576426447&psc=1&hvocijid=13851434422160621387-B0DDCRRR2G-&hvexpln=0"
-            class="cta-btn" target="_blank" rel="noopener noreferrer">
-            Hazte con él
-          </a>
+
+        <div class="col-md-5">
+          <div class="row p-4">
+            <img src="img/HotWheelsUnleashed_DesignBattle_Contest_Logo-1.png" class="img-fluid" alt="">
+          </div>
+          <div class="row py-2">
+            <p>
+              Hot Wheels Unleashed es un videojuego de carreras arcade que recrea el universo Hot Wheels con autos
+              icónicos, pistas llenas de acrobacias y escenarios a gran escala. Destaca por su ritmo rápido, su estilo
+              visual llamativo y la posibilidad de personalizar vehículos y crear circuitos propios.
+            </p>
+          </div>
         </div>
-        <div class="col-lg-6 text-center">
-          <img src="img/card3.jpg" class="img-fluid">
+
+
+        <div class="col-md-6 align-content-center p-4">
+          <div class="row video-box">
+            <img src="img/videoseccionjuego2.gif" alt="GIF de Hot Wheels" class="img-fluid">
+          </div>
         </div>
+
       </div>
+    </div>
+
+    <div class="container-fluid">
+      <img src="img/fueguito.svg" class="img-fluid" alt="">
     </div>
   </section>
 
@@ -210,14 +213,18 @@
     </div>
   </footer>
 
-  <!-- MODAL VIDEO -->
-  <div class="video-modal" id="videoModal">
-    <div class="video-content">
-      <span class="close">&times;</span>
-      <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allowfullscreen></iframe>
-    </div>
-  </div>
+  <!-- CDN Jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
 
+  <!-- Links JS Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+  <!-- Links JS -->
   <script src="script.js"></script>
 </body>
 
