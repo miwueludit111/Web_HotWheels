@@ -1,67 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Colecciones</title>
-    <link rel="stylesheet" href="style/catalogo.css" />
-  </head>
-  <body>
-    
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Colecciones</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Montserrat:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style/catalogo.css" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand" href="homepage.html"><img src="img/isotipo.svg" alt="Logo" width="38" height="38"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+            class="bi bi-three-dots-vertical"></i>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item px-2">
+              <a class="nav-link" href="homepage.html">HOME</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="index.html">VIDEOJUEGO</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link active" href="garaje.html">VER COLECCIONES</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="carrito.html">CARRITO</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="https://998174.cargo.site/" target="_blank">BLOG</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="modelo3d.html">3D</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
 
-       <img class="curvas" src="img/garaje-arreglado.png" alt="curvas" />
-    <!-- INTROssss -->
-    <section class="intro">
-      <h1>Mira en nuestro garaje.</h1>
-    </section>
 
-    <!-- FAKE SCROLL -->
-      <img class="curvas1" src="img/bandera.png" alt="curvas" />
-    <section class="scroll-section">
-      <div class="track">
-        <div class="panel">
-          <div class="panel-content">
-            <img src="img/aff-rompecraneo.png" />
-            <div class="panel-ui">
-              <div class="panel-text">los más malotes</div>
-              <button class="panel-btn"><a href="colecionable.html">ver más</a></button>
-            </div>
+  <img class="curvas" src="img/garaje-arreglado.png" alt="curvas" />
+  <!-- INTROssss -->
+  <section class="intro">
+    <h1>Mira en nuestro garaje.</h1>
+  </section>
+
+  <!-- FAKE SCROLL -->
+  <img class="curvas1" src="img/bandera.png" alt="curvas" />
+  <section class="scroll-section">
+    <div class="track">
+      <div class="panel">
+        <div class="panel-content">
+          <img src="img/aff-rompecraneo.png" />
+          <div class="panel-ui">
+            <div class="panel-text">los más malotes</div>
+            <button class="panel-btn"><a href="colecionable.html">ver más</a></button>
           </div>
         </div>
+      </div>
 
-        <div class="panel">
-          <div class="panel-content">
-            <img src="img/aff-coche1.png" />
-            <div class="panel-ui">
-              <div class="panel-text">gran turismo</div>
-              <button class="panel-btn">ver más</button>
-            </div>
+      <div class="panel">
+        <div class="panel-content">
+          <img src="img/aff-coche1.png" />
+          <div class="panel-ui">
+            <div class="panel-text">gran turismo</div>
+            <button class="panel-btn">ver más</button>
           </div>
         </div>
+      </div>
 
-        <div class="panel">
-          <div class="panel-content">
-            <img src="img/aff-coche2.png" />
-            <div class="panel-ui">
-              <div class="panel-text">clásicos</div>
-              <button class="panel-btn">ver más</button>
-            </div>
+      <div class="panel">
+        <div class="panel-content">
+          <img src="img/aff-coche2.png" />
+          <div class="panel-ui">
+            <div class="panel-text">clásicos</div>
+            <button class="panel-btn">ver más</button>
           </div>
         </div>
-
-        
- 
-    <section class="intro">
-      <h1>Bienvenido a la galería</h1>
-    </section>
+      </div>
 
 
 
+      <section class="intro">
+        <h1>Bienvenido a la galería</h1>
+      </section>
 
-</div>
+
+
+
+    </div>
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="js/catalogo.js"></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

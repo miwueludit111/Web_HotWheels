@@ -2,184 +2,179 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Carrito</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Carrito</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Montserrat:wght@300;400;600&display=swap"
-        rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    
-    <link rel="stylesheet" href="style.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Montserrat:wght@300;400;600&display=swap"
+    rel="stylesheet">
+
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 
 
-    
-    <header>
-  <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container-fluid px-4">
-      <a class="navbar-brand" href="#"><img src="img/isotipo.svg" alt="Logo" width="38" height="38"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="bi bi-three-dots-vertical"></i>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <li class="nav-item px-2">
-            <a class="nav-link" href="index.html">VIDEOJUEGO</a>
-          </li>
-          <li class="nav-item px-2">
-            <a class="nav-link" href="garaje.html">VER COLECCIONES</a>
-          </li>
-          <li class="nav-item px-2">
-            <a class="nav-link" href="homepage.html">HOME</a>
-          </li>
-          <li class="nav-item px-2">
-            <a class="nav-link" href="https://998174.cargo.site/">BLOG</a>
-          </li>
-          <li class="nav-item px-2">
-            <a class="nav-link" href="modelo3d.html">3D</a>
-          </li>
-        </ul>
-        <form class="ms-lg-4 me-3" onsubmit="return false;">
-          <div class="input-group shadow-sm">
-            <span class="input-group-text bg-white border-0"><i class="bi bi-search"></i></span>
-            <input id="searchInput" class="form-control search-input border-0" type="search" placeholder="BUSCAR" aria-label="search">
+
+  <header>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand" href="#"><img src="img/isotipo.svg" alt="Logo" width="38" height="38"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+            class="bi bi-three-dots-vertical"></i>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item px-2">
+              <a class="nav-link" href="homepage.html">HOME</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="index.html">VIDEOJUEGO</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="garaje.html">VER COLECCIONES</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link active" href="carrito.html">CARRITO</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="https://998174.cargo.site/" target="_blank">BLOG</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="modelo3d.html">3D</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <header class="s-header">
+    <div class="container text-center">
+      <h1>Tu Carrito</h1>
+      <p>Revisa los productos antes de continuar</p>
+    </div>
+  </header>
+
+
+  <section class="s-carrito">
+    <div class="container">
+
+
+      <div class="s-carrito-lleno" id="s-carrito-lleno">
+        <div class="s-item-carrito">
+
+          <img src="img/16328354996580 copy.jpg" alt="Hot Wheels Unleashed" class="s-item-img" />
+
+          <div class="s-item-info">
+            <p class="s-item-nombre">Hot Wheels Unleashed</p>
+            <p class="s-item-precio">10,19 €</p>
           </div>
-        </form>
+
+          <a href="pago.html" class="s-item-btn">Comprar</a>
+
+
+        </div>
+      </div>
+
+
+
+
+      <div class="s-carrito-contenido" id="s-carrito-contenido">
+        <div class="row">
+
+
+          <div class="col-lg-8">
+            <div class="s-shopping-cart">
+              <h3>Shopping Cart</h3>
+
+              <div class="s-cart-items" id="s-cart-items">
+
+              </div>
+
+              <a href="catalogo.html" class="s-seguir-comprando">← Seguir comprando</a>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4">
+            <div class="s-order-summary">
+              <h3>Order Summary</h3>
+
+
+              <div class="s-summary-items" id="s-summary-items">
+
+              </div>
+
+              <hr>
+
+
+              <div class="s-summary-totals">
+                <div class="s-summary-row">
+                  <span>Subtotal</span>
+                  <span id="s-subtotal">0,00 €</span>
+                </div>
+                <div class="s-summary-row">
+                  <span>Envío</span>
+                  <span id="s-envio">5,00 €</span>
+                </div>
+                <hr>
+                <div class="s-summary-row s-summary-total">
+                  <span>Total</span>
+                  <span id="s-total">5,00 €</span>
+                </div>
+              </div>
+
+              <a href="pago.html" class="s-btn s-checkout-btn" id="s-btn-checkout">Checkout</a>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
-  </nav>
-</header>
+  </section>
 
-    
-    <header class="s-header">
-        <div class="container text-center">
-            <h1>Tu Carrito</h1>
-            <p>Revisa los productos antes de continuar</p>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h4>Hot Wheels</h4>
+          <p>Velocidad, diseño y adrenalina desde hace generaciones.</p>
         </div>
-    </header>
-
-    
-    <section class="s-carrito">
-        <div class="container">
-
-            
-            <div class="s-carrito-lleno" id="s-carrito-lleno">
-  <div class="s-item-carrito">
-
-    <img
-      src="img/16328354996580 copy.jpg"
-      alt="Hot Wheels Unleashed"
-      class="s-item-img"
-    />
-
-    <div class="s-item-info">
-      <p class="s-item-nombre">Hot Wheels Unleashed</p>
-      <p class="s-item-precio">10,19 €</p>
+        <div class="col-md-4">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="carrito.html">Carrito</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Legal</h4>
+          <ul>
+            <li>Privacidad</li>
+            <li>Términos</li>
+            <li>Cookies</li>
+          </ul>
+        </div>
+      </div>
+      <p class="copy">© 2025 Hot Wheels</p>
     </div>
+  </footer>
 
-    <a href="pago.html" class="s-item-btn">Comprar</a>
-
-
-  </div>
-</div>
-
-
-
-            
-            <div class="s-carrito-contenido" id="s-carrito-contenido">
-                <div class="row">
-
-                    
-                    <div class="col-lg-8">
-                        <div class="s-shopping-cart">
-                            <h3>Shopping Cart</h3>
-
-                            <div class="s-cart-items" id="s-cart-items">
-                                
-                            </div>
-
-                            <a href="catalogo.html" class="s-seguir-comprando">← Seguir comprando</a>
-                        </div>
-                    </div>
-
-                    
-                    <div class="col-lg-4">
-                        <div class="s-order-summary">
-                            <h3>Order Summary</h3>
-
-                            
-                            <div class="s-summary-items" id="s-summary-items">
-                                
-                            </div>
-
-                            <hr>
-
-                            
-                            <div class="s-summary-totals">
-                                <div class="s-summary-row">
-                                    <span>Subtotal</span>
-                                    <span id="s-subtotal">0,00 €</span>
-                                </div>
-                                <div class="s-summary-row">
-                                    <span>Envío</span>
-                                    <span id="s-envio">5,00 €</span>
-                                </div>
-                                <hr>
-                                <div class="s-summary-row s-summary-total">
-                                    <span>Total</span>
-                                    <span id="s-total">5,00 €</span>
-                                </div>
-                            </div>
-
-                            <a href="pago.html" class="s-btn s-checkout-btn" id="s-btn-checkout">Checkout</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <h4>Hot Wheels</h4>
-                    <p>Velocidad, diseño y adrenalina desde hace generaciones.</p>
-                </div>
-                <div class="col-md-4">
-                    <h4>Enlaces</h4>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="catalogo.html">Catálogo</a></li>
-                        <li><a href="carrito.html">Carrito</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li>Privacidad</li>
-                        <li>Términos</li>
-                        <li>Cookies</li>
-                    </ul>
-                </div>
-            </div>
-            <p class="copy">© 2025 Hot Wheels</p>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
