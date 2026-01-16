@@ -288,3 +288,259 @@ function sAddTestProducts() {
   console.log('Productos de prueba añadidos al carrito');
 }
 
+
+/* =====================================================
+   VIDEOJUEGOS PAGE - HERO SLIDESHOW
+   ===================================================== */
+
+(function () {
+  'use strict';
+
+  // Variables del slideshow
+  let currentSlide = 0;
+  let slideInterval = null;
+  let progressInterval = null;
+  let isAnimating = false;
+  const SLIDE_DURATION = 6000; // 6 segundos por slide
+  const PROGRESS_UPDATE = 50; // Actualizar progreso cada 50ms
+  const ANIMATION_DURATION = 700; // Duración de la animación en ms
+
+  // Elementos del DOM
+  const slidesContainer = document.querySelector('.vj-slides-container');
+
+  // Solo ejecutar si estamos en la página de videojuegos
+  if (!slidesContainer) return;
+
+  const slides = document.querySelectorAll('.vj-slide');
+  const indicators = document.querySelectorAll('.vj-indicator');
+  const prevBtn = document.querySelector('.vj-prev');
+  const nextBtn = document.querySelector('.vj-next');
+  const progressFill = document.querySelector('.vj-progress-fill');
+
+  if (slides.length === 0) return;
+
+  const totalSlides = slides.length;
+
+  // Inicializar backgrounds de los slides
+  function initSlideBackgrounds() {
+    slides.forEach(slide => {
+      const bgImage = slide.dataset.bg;
+      if (bgImage) {
+        slide.style.backgroundImage = `url('${bgImage}')`;
+      }
+    });
+  }
+
+  // Inicializar posiciones de los slides
+  function initSlidePositions() {
+    slides.forEach((slide, index) => {
+      slide.classList.remove('active', 'prev', 'next');
+      if (index === 0) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.add('next');
+      }
+    });
+  }
+
+  // Ir a un slide específico con dirección
+  function goToSlide(newIndex, direction = 'next', resetTimer = true) {
+    if (isAnimating) return;
+    if (newIndex === currentSlide) return;
+
+    isAnimating = true;
+
+    // Calcular índice normalizado (loop infinito)
+    let targetIndex = newIndex;
+    if (targetIndex < 0) targetIndex = totalSlides - 1;
+    if (targetIndex >= totalSlides) targetIndex = 0;
+
+    const currentSlideEl = slides[currentSlide];
+    const targetSlideEl = slides[targetIndex];
+
+    // Desactivar transiciones temporalmente para posicionar
+    targetSlideEl.style.transition = 'none';
+
+    // Posicionar el nuevo slide según la dirección
+    if (direction === 'next') {
+      targetSlideEl.classList.remove('prev', 'active');
+      targetSlideEl.classList.add('next');
+    } else {
+      targetSlideEl.classList.remove('next', 'active');
+      targetSlideEl.classList.add('prev');
+    }
+
+    // Forzar reflow para aplicar el posicionamiento inmediato
+    targetSlideEl.offsetHeight;
+
+    // Reactivar transiciones
+    targetSlideEl.style.transition = '';
+
+    // Realizar la animación
+    requestAnimationFrame(() => {
+      // Mover el slide actual hacia afuera
+      currentSlideEl.classList.remove('active');
+      if (direction === 'next') {
+        currentSlideEl.classList.add('prev');
+      } else {
+        currentSlideEl.classList.add('next');
+      }
+
+      // Mover el nuevo slide hacia el centro
+      targetSlideEl.classList.remove('prev', 'next');
+      targetSlideEl.classList.add('active');
+    });
+
+    // Actualizar indicadores
+    indicators.forEach((indicator, index) => {
+      indicator.classList.toggle('active', index === targetIndex);
+    });
+
+    // Actualizar índice actual
+    currentSlide = targetIndex;
+
+    // Desbloquear después de la animación
+    setTimeout(() => {
+      isAnimating = false;
+    }, ANIMATION_DURATION);
+
+    // Reiniciar timer si es necesario
+    if (resetTimer) {
+      resetProgress();
+      startAutoplay();
+    }
+  }
+
+  // Slide siguiente
+  function nextSlide() {
+    const next = (currentSlide + 1) % totalSlides;
+    goToSlide(next, 'next');
+  }
+
+  // Slide anterior
+  function prevSlide() {
+    const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+    goToSlide(prev, 'prev');
+  }
+
+  // Ir a un slide por indicador (detectar dirección)
+  function goToSlideByIndicator(index) {
+    if (index === currentSlide) return;
+    const direction = index > currentSlide ? 'next' : 'prev';
+    goToSlide(index, direction);
+  }
+
+  // Iniciar reproducción automática
+  function startAutoplay() {
+    stopAutoplay();
+
+    let progress = 0;
+    const increment = (PROGRESS_UPDATE / SLIDE_DURATION) * 100;
+
+    progressInterval = setInterval(() => {
+      progress += increment;
+      if (progressFill) {
+        progressFill.style.width = `${Math.min(progress, 100)}%`;
+      }
+    }, PROGRESS_UPDATE);
+
+    slideInterval = setTimeout(() => {
+      nextSlide();
+    }, SLIDE_DURATION);
+  }
+
+  // Detener reproducción automática
+  function stopAutoplay() {
+    if (slideInterval) {
+      clearTimeout(slideInterval);
+      slideInterval = null;
+    }
+    if (progressInterval) {
+      clearInterval(progressInterval);
+      progressInterval = null;
+    }
+  }
+
+  // Resetear barra de progreso
+  function resetProgress() {
+    if (progressFill) {
+      progressFill.style.transition = 'none';
+      progressFill.style.width = '0%';
+      // Forzar reflow
+      progressFill.offsetHeight;
+      progressFill.style.transition = 'width 0.1s linear';
+    }
+  }
+
+  // Event Listeners
+  if (prevBtn) {
+    prevBtn.addEventListener('click', prevSlide);
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', nextSlide);
+  }
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      goToSlideByIndicator(index);
+    });
+  });
+
+  // Pausar en hover (opcional - mejor UX)
+  slidesContainer.addEventListener('mouseenter', () => {
+    stopAutoplay();
+  });
+
+  slidesContainer.addEventListener('mouseleave', () => {
+    resetProgress();
+    startAutoplay();
+  });
+
+  // Soporte para teclado
+  document.addEventListener('keydown', (e) => {
+    // Solo si estamos en la página de videojuegos
+    if (!document.querySelector('.vj-hero-slideshow')) return;
+
+    if (e.key === 'ArrowLeft') {
+      prevSlide();
+    } else if (e.key === 'ArrowRight') {
+      nextSlide();
+    }
+  });
+
+  // Soporte para swipe en móvil
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  slidesContainer.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  slidesContainer.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe izquierda - siguiente slide
+        nextSlide();
+      } else {
+        // Swipe derecha - slide anterior
+        prevSlide();
+      }
+    }
+  }
+
+  // Inicializar
+  initSlideBackgrounds();
+  initSlidePositions();
+  startAutoplay();
+
+})();
+

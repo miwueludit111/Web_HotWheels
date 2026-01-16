@@ -1289,3 +1289,381 @@ a {
     transform: translateY(0);
   }
 }
+
+/* =====================================================
+   VIDEOJUEGOS PAGE - HERO SLIDESHOW
+   ===================================================== */
+
+.vj-hero-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #0c1022;
+}
+
+.vj-slides-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Slide Individual - Sistema de slide horizontal */
+.vj-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(100%);
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+
+/* Estado activo - en pantalla */
+.vj-slide.active {
+  transform: translateX(0);
+  z-index: 2;
+}
+
+/* Slide que sale hacia la izquierda */
+.vj-slide.prev {
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+/* Slide que entra desde la derecha (por defecto) */
+.vj-slide.next {
+  transform: translateX(100%);
+  z-index: 1;
+}
+
+.vj-slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      rgba(12, 16, 34, 0.85) 0%,
+      rgba(12, 16, 34, 0.5) 50%,
+      rgba(12, 16, 34, 0.7) 100%);
+}
+
+/* Contenido del Slide */
+.vj-slide-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 40px 60px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.vj-slide-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff2e2e, #ff6b35);
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 8px 24px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: vjSlideIn 0.6s ease forwards 0.3s;
+}
+
+.vj-slide-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 30px rgba(255, 46, 46, 0.4);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: vjSlideIn 0.6s ease forwards 0.4s;
+}
+
+.vj-slide-description {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+  line-height: 1.7;
+  margin: 0 0 30px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: vjSlideIn 0.6s ease forwards 0.5s;
+}
+
+.vj-slide-image {
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  animation: vjImageIn 0.8s ease forwards 0.6s;
+}
+
+.vj-slide-image img {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(255, 46, 46, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.vj-slide-image img:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(255, 46, 46, 0.3);
+}
+
+.vj-slide-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #ff2e2e, #cc2424);
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px 36px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: vjSlideIn 0.6s ease forwards 0.7s;
+  box-shadow: 0 8px 30px rgba(255, 46, 46, 0.4);
+}
+
+.vj-slide-cta:hover {
+  background: linear-gradient(135deg, #ff4545, #ff2e2e);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(255, 46, 46, 0.5);
+  color: #fff;
+}
+
+.vj-slide-cta i {
+  transition: transform 0.3s ease;
+}
+
+.vj-slide-cta:hover i {
+  transform: translateX(5px);
+}
+
+/* Animaciones de Slide */
+@keyframes vjSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vjImageIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Reset animaciones cuando el slide no está activo */
+.vj-slide:not(.active) .vj-slide-badge,
+.vj-slide:not(.active) .vj-slide-title,
+.vj-slide:not(.active) .vj-slide-description,
+.vj-slide:not(.active) .vj-slide-image,
+.vj-slide:not(.active) .vj-slide-cta {
+  animation: none;
+  opacity: 0;
+}
+
+/* Flechas de Navegación */
+.vj-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vj-nav-arrow:hover {
+  background: rgba(255, 46, 46, 0.8);
+  border-color: #ff2e2e;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.vj-prev {
+  left: 30px;
+}
+
+.vj-next {
+  right: 30px;
+}
+
+/* Indicadores de Slide */
+.vj-slide-indicators {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 15px;
+}
+
+.vj-indicator {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.vj-indicator:hover {
+  border-color: #ff2e2e;
+  background: rgba(255, 46, 46, 0.3);
+}
+
+.vj-indicator.active {
+  border-color: #ff2e2e;
+  background: #ff2e2e;
+  transform: scale(1.2);
+}
+
+/* Barra de Progreso */
+.vj-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+.vj-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff2e2e, #ff6b35);
+  transition: width 0.1s linear;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .vj-nav-arrow {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .vj-prev {
+    left: 15px;
+  }
+
+  .vj-next {
+    right: 15px;
+  }
+
+  .vj-slide-image img {
+    max-width: 280px;
+  }
+
+  .vj-slide-content {
+    padding: 100px 30px 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .vj-nav-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+  }
+
+  .vj-prev {
+    left: 10px;
+  }
+
+  .vj-next {
+    right: 10px;
+  }
+
+  .vj-slide-indicators {
+    bottom: 50px;
+  }
+
+  .vj-indicator {
+    width: 12px;
+    height: 12px;
+  }
+
+  .vj-slide-image img {
+    max-width: 220px;
+  }
+
+  .vj-slide-cta {
+    padding: 14px 28px;
+    font-size: 0.9rem;
+  }
+
+  .vj-slide-content {
+    padding: 80px 20px 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vj-slide-badge {
+    font-size: 0.65rem;
+    padding: 6px 18px;
+  }
+
+  .vj-slide-image img {
+    max-width: 180px;
+  }
+
+  .vj-slide-indicators {
+    bottom: 40px;
+    gap: 10px;
+  }
+
+  .vj-indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
